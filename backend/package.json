@@ -1,12 +1,23 @@
 {
-    "scripts": {
-        "dev": "nodemon server.js"
-    },
-    "dependencies": {
-        "express": "^4.16.2",
-        "mongodb": "^2.2.33",
-        "mongoose": "^4.13.4",
-        "nodemon": "^1.12.1",
-        "pubnub": "^4.18.0"
-    }
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "mongodb": "^3.4.10",
+    "mongoose": "^4.13.5",
+    "monk": "^4.0.0",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
 }
