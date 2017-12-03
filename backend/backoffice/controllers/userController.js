@@ -28,18 +28,17 @@ exports.list_all_users = (req, res) => {
 
   getTeachers();
   function getTeachers(){
-        Role.find({name: 'teacher'}, (err, role) => {
-            User.find({_role: role[0]['_id']}, (err, teacher) => {
-              if (err)
-                res.send(err);
-              teachers = teacher;
-            }).then(  
-              (success) => {
-                console.log(teachers);
-                getStudents();
-              }); 
-        })   
-    }
+    Role.find({name: 'teacher'}, (err, role) => {
+      User.find({_role: role[0]['_id']}, (err, teacher) => {
+        if (err)
+          res.send(err);
+        teachers = teacher;
+      }).then((success) => {
+          getStudents();
+        }); 
+    })   
+  }
+
   function getStudents(){
       Role.find({name: 'student'}, (err, role) => {
         User.find({_role: role[0]['_id']}, (err, student) => {
@@ -48,13 +47,13 @@ exports.list_all_users = (req, res) => {
             students = student;
         }).then(  
           (success) => {
-            console.log(students);
             finish();
           }); 
     });
   }
   function finish(){
-    console.log(teachers, students)
+    var users = true;
+    res.render('users/index', { title: 'users', teachers: teachers, students: students, users: users });
   }
   
   
