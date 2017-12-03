@@ -30,7 +30,7 @@ exports.read_a_user = (req, res) => {
 
 //ADD A STUDENT
 exports.populate = (req, res) => {
-   Role.findOne({name: 'teacher'} , (err, role) => {
+   Role.findOne({name: 'student'} , (err, role) => {
     var new_user = new User(req.body);
     console.log(new_user._role);
     new_user['_role'] = role;

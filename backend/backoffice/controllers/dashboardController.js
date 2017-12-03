@@ -3,5 +3,6 @@ var mongoose = require('mongoose');
 
 
 exports.get_dashboard = (req, res) => {
-  res.render('index')
+  var dashboard = true;
+  res.render('index', {'title': 'dashboard', dashboard: dashboard })
 };

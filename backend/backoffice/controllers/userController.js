@@ -4,11 +4,60 @@ var User = mongoose.model('Users', 'UserSchema');
 var Role = mongoose.model('Roles', 'RoleSchema');
 
 exports.list_all_users = (req, res) => {
-  User.find({}, (err, user) => {
+  var teachers = [];
+  var students = [];
+/*
+  
+  Role.find({name: 'teacher'}, (err, role) => {}).then(  
+    (role) => {
+      users(role[0]['_id']);
+    }, (err) => {
+      console.log(err);
+    });
+
+  Role.find({name: 'student'}, (err, role) => {
     if (err)
       res.send(err);
-    res.render('users/index', { title: 'Hey', users: user })
   });
+
+  console.log(teachers);
+  async function renderView(res){
+    
+   // res.render('users/index', { title: 'users', teachers: teachers, students: students })
+  }*/
+
+  getTeachers();
+  function getTeachers(){
+        Role.find({name: 'teacher'}, (err, role) => {
+            User.find({_role: role[0]['_id']}, (err, teacher) => {
+              if (err)
+                res.send(err);
+              teachers = teacher;
+            }).then(  
+              (success) => {
+                console.log(teachers);
+                getStudents();
+              }); 
+        })   
+    }
+  function getStudents(){
+      Role.find({name: 'student'}, (err, role) => {
+        User.find({_role: role[0]['_id']}, (err, student) => {
+          if (err)
+            res.send(err);
+            students = student;
+        }).then(  
+          (success) => {
+            console.log(students);
+            finish();
+          }); 
+    });
+  }
+  function finish(){
+    console.log(teachers, students)
+  }
+  
+  
 };
 
 exports.create_a_user = (req, res) => {

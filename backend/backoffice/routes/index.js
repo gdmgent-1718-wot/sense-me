@@ -23,8 +23,8 @@ module.exports = function(app) {
 
   app.route('/backoffice/users')
     .get(users.list_all_users)
-   // .post(users.populate)
-    .post(users.create_a_user);
+    .post(users.populate)
+   // .post(users.create_a_user);
 
   app.route('/backoffice/users/:userId')
     .get(users.read_a_user)
