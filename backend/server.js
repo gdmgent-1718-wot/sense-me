@@ -7,7 +7,9 @@ var express = require('express'),
     /***** 
      * MODELS 
      *****/
-    Role = require('./models/roleModel'); //created model loading here
+    Role = require('./models/roleModel')
+    User = require('./models/userModel')
+    ; //created model loading here
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -17,6 +19,7 @@ mongoose.connect('mongodb://localhost:27017/Tododb');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use("/css",express.static(__dirname + "/css"));
 app.set('views', path.join(__dirname, '/backoffice/views'));
 app.set('view engine', 'pug');
 

@@ -1,0 +1,88 @@
+
+@import 'base';
+@import '_helpers';
+
+h1, h2, h3, h4, h5, h6, p, span, a {
+    font-family: $font-family;
+    color: $black;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $bold;
+}
+
+p, span, a {
+    font-weight: $regular;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    .header {
+        -webkit-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        padding: 0 35px;
+        height: 44px;
+        background: $gray;
+        img {
+            height: 30px;
+        }
+        .title {
+            text-transform: uppercase;
+            font-weight: $bold;
+        }
+    }
+    .container {
+        .navigation {
+            background: $light-blue;
+            height: calc(100vh - 40px);
+            width: 100px;
+            a {
+                color: $white;
+                text-decoration: none;
+                -webkit-box-sizing: border-box !important;
+                box-sizing: border-box !important;
+                width: 100px;
+                height: 100px;
+                background: #73caeb;
+                border-bottom: 1px solid #fff;
+                text-align: center;
+                padding: 34px;
+                cursor: pointer;
+                i {
+                    color: $white;
+                    font-size: 29px;
+                    text-align: center;
+                    -ms-flex-order: 0;
+                    -webkit-box-ordinal-group: 1;
+                    order: 0;
+                    -ms-flex: 0 1 auto;
+                    -webkit-box-flex: 0;
+                    flex: 0 1 auto;
+                    -webkit-align-self: auto;
+                    -ms-flex-item-align: auto;
+                    align-self: auto;
+                }
+                &.active{
+                    background: $dark-blue;
+                }
+            }
+            .padded {
+                border-bottom: 1px solid #fff;
+                -webkit-order: 0;
+                -ms-flex-order: 0;
+                order: 0;
+                -webkit-flex: 2 1 auto;
+                -ms-flex: 2 1 auto;
+                flex: 2 1 auto;
+                -webkit-align-self: auto;
+                -ms-flex-item-align: auto;
+                align-self: auto;
+            }
+        }
+        .content{
+            -webkit-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+            padding: 30px;
+        }
+    }
+}

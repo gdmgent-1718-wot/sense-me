@@ -1,7 +1,26 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    title=title
+    meta(charset="utf-8")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='../../css/style.min.css')
+    link(rel='stylesheet', href='../../css/font-awesome/css/font-awesome.min.css')
+  body  
+    .header(class="flex justified-space centered")
+        img(src="../../css/assets/logo.png")
+        span.title=title    
+    .container(class="flex")  
+      .navigation(class="flex column justified-start")
+       a 
+        i.fa.fa-tachometer(aria-hidden="true")
+       a 
+        i.fa.fa-calendar(aria-hidden="true")
+       a  
+        i.fa.fa-users(aria-hidden="true") 
+       span.padded
+       a
+        i.fa.fa-sign-out(aria-hidden="true") 
+      
+      .content 
+        block content

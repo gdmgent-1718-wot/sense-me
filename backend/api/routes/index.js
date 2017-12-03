@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(app) {
   var roles = require('../controllers/roleController');
-
+  var users = require('../controllers/userController');
   // Routes
   app.route('/api/roles')
     .get(roles.list_all_roles)
@@ -11,5 +11,15 @@ module.exports = function(app) {
     .get(roles.read_a_role)
     .put(roles.update_a_role)
     .delete(roles.delete_a_role);
+
+  app.route('/api/users')
+    .get(users.list_all_users)
+    .post(users.populate);
+   // .post(users.create_a_user);
+
+  app.route('/api/users/:userId')
+    .get(users.read_a_user)
+    .put(users.update_a_user)
+    .delete(users.delete_a_user);
 };
 
