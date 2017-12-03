@@ -86,6 +86,75 @@ body{
             -webkit-box-sizing: border-box !important;
             box-sizing: border-box !important;
             padding: 30px;
+            width: 100%;
+            .flex h1 {
+                font-weight: 800;
+                text-align: center;
+                width: 50%;
+                font-size: 20px;
+                text-transform: uppercase;
+                background: orange;
+                padding: 5px;
+                border: 1px solid white;
+                color: white;
+                margin: 0;
+                box-shadow: 2px 1px 6px #dfdfdf;
+            }
+            .flex table {
+                width: 50%;
+                -webkit-order: 0;
+                -ms-flex-order: 0;
+                order: 0;
+                -webkit-flex: 1 1 auto;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                -webkit-align-self: auto;
+                -ms-flex-item-align: auto;
+                align-self: auto;
+                thead {
+                    background: $gray;
+                    height: 40px;
+                    tr {
+                        box-shadow: 2px 1px 6px #dfdfdf;
+                        th{
+                            font-family: $font-family;
+                            font-weight: $thin;
+                            font-size: 10px;
+                        }
+                    }
+                } 
+                tbody {
+                    tr {
+                        box-shadow: 2px 1px 6px #dfdfdf;
+                        td {
+                            font-family: $font-family;
+                            font-weight: $thin;
+                            padding: 3px;
+                            text-align: center;
+                            &.actions {
+                                i {
+                                    font-size: 19px;
+                                    margin: 0 20px;
+                                }
+                            }
+                            .active {
+                                background: rgb(24, 237, 71);
+                                height: 15px;
+                                width: 15px;
+                                border-radius: 100%;
+                                margin: 10px calc(50% - 10px);
+                                }
+                            .inactive {
+                                background: rgb(240, 20, 71);
+                                height: 15px;
+                                width: 15px;
+                                border-radius: 100%;
+                                margin: 10px calc(50% - 10px);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

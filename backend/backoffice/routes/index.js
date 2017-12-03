@@ -3,6 +3,7 @@ module.exports = function(app) {
   var roles = require('../controllers/roleController');
   var users = require('../controllers/userController');
   var dashboard = require('../controllers/dashboardController');
+  var events = require('../controllers/eventsController');
   /**
    * DASHBOARD
    */
@@ -30,6 +31,12 @@ module.exports = function(app) {
     .get(users.read_a_user)
     .put(users.update_a_user)
     .delete(users.delete_a_user);
+ /**
+   * Events
+   */
+  app.route('/backoffice/events')
+  .get(events.list_all_roles)
+  .post(events.create_a_role);
 
 
 };

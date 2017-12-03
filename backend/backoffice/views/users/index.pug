@@ -1,32 +1,40 @@
 extends ../layout
 
 block content
-  table
-    thead
-      tr
-        th actief
-        th naam
-        th actie
-    tbody
-      each user, i in teachers
+  .flex
+    h1 Docenten
+    h1 Studenten
+  .flex
+    table
+      thead
         tr
-          td= user.active
-          td= user.name
-          td 
-            i.fa.fa-pencil
-            i.fa.fa-trash
-  table
-    thead
-      tr
-        th actief
-        th naam
-        th actie
-    tbody     
-      each user, i in students
+          th actief
+          th naam
+          th actie
+      tbody
+        each user, i in teachers
+          tr
+            td
+              div(class=user.active == true ? 'active': 'inactive')
+            td= user.name
+             td.actions
+              i.fa.fa-pencil
+              i.fa.fa-trash
+
+  
+    table
+      thead
         tr
-          td= user.active
-          td= user.name
-          td 
-            i.fa.fa-pencil
-            i.fa.fa-trash
+          th actief
+          th naam
+          th actie
+      tbody     
+        each user, i in students
+          tr
+            td
+              div(class=user.active == true ? 'active': 'inactive')
+            td= user.name
+            td.actions
+              i.fa.fa-pencil
+              i.fa.fa-trash
       

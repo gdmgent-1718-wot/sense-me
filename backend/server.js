@@ -9,6 +9,7 @@ var express = require('express'),
      *****/
     Role = require('./models/roleModel')
     User = require('./models/userModel')
+    Events = require('./models/eventModel')
     ; //created model loading here
 
 // mongoose instance connection url connection

@@ -154,4 +154,62 @@ body {
   body .container .content {
     -webkit-box-sizing: border-box !important;
     box-sizing: border-box !important;
-    padding: 30px; }
+    padding: 30px;
+    width: 100%; }
+    body .container .content .flex h1 {
+      font-weight: 800;
+      text-align: center;
+      width: 50%;
+      font-size: 20px;
+      text-transform: uppercase;
+      background: orange;
+      padding: 5px;
+      border: 1px solid white;
+      color: white;
+      margin: 0;
+      -webkit-box-shadow: 2px 1px 6px #dfdfdf;
+              box-shadow: 2px 1px 6px #dfdfdf; }
+    body .container .content .flex table {
+      width: 50%;
+      -ms-flex-order: 0;
+      -webkit-box-ordinal-group: 1;
+              order: 0;
+      -ms-flex: 1 1 auto;
+      -webkit-box-flex: 1;
+              flex: 1 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto; }
+      body .container .content .flex table thead {
+        background: #fafafa;
+        height: 40px; }
+        body .container .content .flex table thead tr {
+          -webkit-box-shadow: 2px 1px 6px #dfdfdf;
+                  box-shadow: 2px 1px 6px #dfdfdf; }
+          body .container .content .flex table thead tr th {
+            font-family: Arial, "Helvetica";
+            font-weight: 200;
+            font-size: 10px; }
+      body .container .content .flex table tbody tr {
+        -webkit-box-shadow: 2px 1px 6px #dfdfdf;
+                box-shadow: 2px 1px 6px #dfdfdf; }
+        body .container .content .flex table tbody tr td {
+          font-family: Arial, "Helvetica";
+          font-weight: 200;
+          padding: 3px;
+          text-align: center; }
+          body .container .content .flex table tbody tr td.actions i {
+            font-size: 19px;
+            margin: 0 20px; }
+          body .container .content .flex table tbody tr td .active {
+            background: #18ed47;
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            margin: 10px calc(50% - 10px); }
+          body .container .content .flex table tbody tr td .inactive {
+            background: #f01447;
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            margin: 10px calc(50% - 10px); }
