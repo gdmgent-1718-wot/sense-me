@@ -6,25 +6,6 @@ var Role = mongoose.model('Roles', 'RoleSchema');
 exports.list_all_users = (req, res) => {
   var teachers = [];
   var students = [];
-/*
-  
-  Role.find({name: 'teacher'}, (err, role) => {}).then(  
-    (role) => {
-      users(role[0]['_id']);
-    }, (err) => {
-      console.log(err);
-    });
-
-  Role.find({name: 'student'}, (err, role) => {
-    if (err)
-      res.send(err);
-  });
-
-  console.log(teachers);
-  async function renderView(res){
-    
-   // res.render('users/index', { title: 'users', teachers: teachers, students: students })
-  }*/
 
   getTeachers();
   function getTeachers(){
@@ -82,6 +63,7 @@ exports.populate = (req, res) => {
       res.send(err);
     res.json(user);
   });
+
   var new_user = new User(req.body.push({_role: role}));
   new_user.save((err, user) => {
     if (err)

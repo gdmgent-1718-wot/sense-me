@@ -3,7 +3,7 @@ module.exports = function(app) {
   var roles = require('../controllers/roleController');
   var users = require('../controllers/userController');
   var dashboard = require('../controllers/dashboardController');
-  var events = require('../controllers/eventsController');
+  var events = require('../controllers/eventController');
   /**
    * DASHBOARD
    */
@@ -24,19 +24,20 @@ module.exports = function(app) {
 
   app.route('/backoffice/users')
     .get(users.list_all_users)
-    .post(users.populate)
-   // .post(users.create_a_user);
+    //.post(users.populate)
+    .post(users.create_a_user);
 
   app.route('/backoffice/users/:userId')
     .get(users.read_a_user)
-    .put(users.update_a_user)
-    .delete(users.delete_a_user);
+    .put(users.update_a_user);
+
+  app.route('/backoffice/users/:userId/delete')
+    .post(users.delete_a_user);
  /**
    * Events
    */
   app.route('/backoffice/events')
-  .get(events.list_all_roles)
-  .post(events.create_a_role);
+  .get(events.get_index);
 
 
 };
