@@ -216,7 +216,7 @@ body {
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto; }
-    body .container .content #alert {
+    body .container .content #alert, body .container .content #create {
       -webkit-box-sizing: border-box !important;
       box-sizing: border-box !important;
       position: absolute;
@@ -225,11 +225,11 @@ body {
       left: 100px;
       right: 0;
       background: rgba(23, 23, 23, 0.7); }
-      body .container .content #alert.visible {
+      body .container .content #alert.visible, body .container .content #create.visible {
         display: block; }
-      body .container .content #alert.hide {
+      body .container .content #alert.hide, body .container .content #create.hide {
         display: none; }
-      body .container .content #alert .box {
+      body .container .content #alert .box, body .container .content #create .box {
         -webkit-box-sizing: border-box !important;
         box-sizing: border-box !important;
         background: #fff;
@@ -237,14 +237,14 @@ body {
         margin: 10% 35%;
         padding: 50px;
         text-align: center; }
-        body .container .content #alert .box form {
+        body .container .content #alert .box form, body .container .content #create .box form {
           float: left; }
-          body .container .content #alert .box form button {
+          body .container .content #alert .box form button, body .container .content #create .box form button {
             border: none;
             border-radius: 50px;
             background: #FFA734;
             padding: 10px 20px; }
-        body .container .content #alert .box button {
+        body .container .content #alert .box button, body .container .content #create .box button {
           float: right;
           border: none;
           border-radius: 50px;

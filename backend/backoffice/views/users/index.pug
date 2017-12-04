@@ -3,7 +3,15 @@ extends ../layout
 block content
   - var userId = "id"
   - var userName = "name"
-  - var deleted = false
+  - var type
+
+  .flex 
+    button(type='button' class='btn' onclick="popup('type')") Docent aanmaken 
+    - var type = "teacher";
+
+    button(type='button' class='btn' onclick="popup('type')") Student aanmaken
+    - type = "student";
+
   .flex
     h1 Studenten
     h1 Docenten
@@ -16,18 +24,17 @@ block content
           th actie
       tbody     
         each user, i in students
-          if deleted === false
-            tr
-              td
-                div(class=user.active == true ? 'active': 'inactive')
-              td(id=`${user._id}`)= user.name
-              td.actions
-                button(type='button' class='btn-icon' onclick='popup()') 
-                  i.fa.fa-pencil
-                button(type='button' class='btn-icon' onclick='popup()')
-                  i.fa.fa-trash 
-                    - userId = user._id
-                    - userName = user.name
+          tr
+            td
+              div(class=user.active == true ? 'active': 'inactive')
+            td(id=`${user._id}`)= user.name
+            td.actions
+              button(type='button' class='btn-icon' onclick="popup('alert')") 
+                i.fa.fa-pencil
+              button(type='button' class='btn-icon' onclick="popup('alert')")
+                i.fa.fa-trash 
+                  - userId = user._id
+                  - userName = user.name
     table
       thead
         tr
@@ -41,31 +48,64 @@ block content
                 div(class=user.active == true ? 'active': 'inactive')
               td(id=`${user._id}`)= user.name
               td.actions
-                button(type='button' class='btn-icon' onclick='popup()') 
+                button(type='button' class='btn-icon' onclick="popup('alert')") 
                   i.fa.fa-pencil
-                button(type='button' class='btn-icon' onclick='popup()')
+                button(type='button' class='btn-icon' onclick="popup('alert')")
                   i.fa.fa-trash 
                     - userId = user._id
                     - userName = user.name
 
   #alert.hide
     .box
-      p Are you sure you want to delete #{userName}?
+      p Bent u zeker dat u #{userName} wil verwijderen?
         form(method='post' action=`/backoffice/users/${userId}/delete`)
-          button.btn(type='submit' onclick='hide()') Yes I want to delete this user.
-        button.btn(onclick='hide()') No, do not delete this person. 
+          button.btn(type='submit' onclick="hide('alert')") Yes I want to delete this user.
+        button.btn(onclick="hide('alert')") No, do not delete this person. 
+
+  #create.hide
+    .box
+      p Maak een nieuwe #{type} aan.
+        form(method='post' action=`/backoffice/users`)
+          .flex.column.start
+            label Naam
+            input(type="text" placeholder="Naam" name="name" value="")
+            input(type="hidden" placeholder="Naam" name="active" value="false")
+            input(type="hidden" placeholder="Naam" name="_role" value=`${type}`)
+          .flex.column.start
+            label Geboortedatum
+            input(type="date" placeholder="Geboortedatum" name="birthday" value="")
+          .flex.column.start
+            label Woonplaats
+            input(type="text" placeholder="Woonplaats" name="origin" value="")
+          .flex.column.start
+            label Over persoon
+            input(type="text" placeholder="Over persoon" name="about" value="")
+          .flex.justified-space 
+            button.btn(type='submit' onclick="hide('type')") Yes I want to create this user.
+            button.btn(onclick="hide('alert')") Annuleer. 
       
   script.
-    var popup = function () {
-      var alert = document.querySelector('#alert');
-      alert.classList.remove('hide');
-      alert.classList.add('visible');
+    var popup = function (type) {
+      if(type == 'alert'){
+        var alert = document.querySelector('#alert');
+            alert.classList.remove('hide');
+            alert.classList.add('visible');
+      } else if(type == 'type'){
+         var create = document.querySelector('#create');
+              create.classList.remove('hide');
+              create.classList.add('visible');
+      }
     }
-    var hide = function () {
-      var alert = document.querySelector('#alert');
-          alert.classList.remove('visible');
-          alert.classList.add('hide');
-  
+    var hide = function (type) {
+      if(type == 'alert'){
+        var alert = document.querySelector('#alert');
+            alert.classList.remove('visible');
+            alert.classList.add('hide');
+      } else if(type == 'type'){
+        var create = document.querySelector('#create');
+            create.classList.remove('visible');
+            create.classList.add('hide');
+      }
     }
     var doHide = function(id){
         hide();
