@@ -185,9 +185,12 @@ body{
                     margin: 10% 35%;
                     padding: 50px;
                     text-align: center;
-                    p {}
                     form {
-                        float: left;
+                        label {
+                            font-family: $font-family;
+                            font-size: 13px;
+                            font-weight: $bold;
+                        }
                         button {
                             border: none;
                             border-radius: 50px;
@@ -196,12 +199,34 @@ body{
                         }
                     }
                     button {
-                        float: right;
                         border: none;
                         border-radius: 50px;
                         background: $orange;
                         padding: 10px 20px;
                     }
+                }
+            }
+            #create {
+                .box {
+                    margin: 4% 30%;
+                    height: 70%;
+                    form {
+                        .form-item {
+                            margin: 15px 0;
+                        }
+                        button {
+                            width: 100%;
+                        }
+                    }
+                }
+                .btn-close {
+                    position: absolute;
+                    font-size: 20px;
+                    background: none;
+                    border: none;
+                    color: $orange;
+                    margin: 5% 0 0 57%;
+                    cursor: pointer;
                 }
             }
         }

@@ -1,9 +1,16 @@
+@charset "UTF-8";
 /*
  * COLORS
  */
 /*
  * FONT STYLES
  */
+/*
+ *   DEFAULT
+ */
+button, a {
+  cursor: pointer; }
+
 .flex {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -237,16 +244,32 @@ body {
         margin: 10% 35%;
         padding: 50px;
         text-align: center; }
-        body .container .content #alert .box form, body .container .content #create .box form {
-          float: left; }
-          body .container .content #alert .box form button, body .container .content #create .box form button {
-            border: none;
-            border-radius: 50px;
-            background: #FFA734;
-            padding: 10px 20px; }
-        body .container .content #alert .box button, body .container .content #create .box button {
-          float: right;
+        body .container .content #alert .box form label, body .container .content #create .box form label {
+          font-family: Arial, "Helvetica";
+          font-size: 13px;
+          font-weight: 800; }
+        body .container .content #alert .box form button, body .container .content #create .box form button {
           border: none;
           border-radius: 50px;
           background: #FFA734;
           padding: 10px 20px; }
+        body .container .content #alert .box button, body .container .content #create .box button {
+          border: none;
+          border-radius: 50px;
+          background: #FFA734;
+          padding: 10px 20px; }
+    body .container .content #create .box {
+      margin: 4% 30%;
+      height: 70%; }
+      body .container .content #create .box form .form-item  {
+        margin: 15px 0; }
+      body .container .content #create .box form button {
+        width: 100%; }
+    body .container .content #create .btn-close {
+      position: absolute;
+      font-size: 20px;
+      background: none;
+      border: none;
+      color: #FFA734;
+      margin: 5% 0 0 57%;
+      cursor: pointer; }

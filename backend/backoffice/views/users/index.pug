@@ -3,13 +3,12 @@ extends ../layout
 block content
   - var userId = "id"
   - var userName = "name"
-  - var type
 
   .flex 
-    button(type='button' class='btn' onclick="popup('type')") Docent aanmaken 
+    button(type='button' class='btn' onclick="popup('teacher')") Docent aanmaken 
     - var type = "teacher";
 
-    button(type='button' class='btn' onclick="popup('type')") Student aanmaken
+    button(type='button' class='btn' onclick="popup('student')") Student aanmaken
     - type = "student";
 
   .flex
@@ -58,31 +57,32 @@ block content
   #alert.hide
     .box
       p Bent u zeker dat u #{userName} wil verwijderen?
+      .flex.justified-space 
         form(method='post' action=`/backoffice/users/${userId}/delete`)
           button.btn(type='submit' onclick="hide('alert')") Yes I want to delete this user.
         button.btn(onclick="hide('alert')") No, do not delete this person. 
 
   #create.hide
+    button.btn-close(onclick="hide('type')") 
+      i.fa.fa-close
     .box
       p Maak een nieuwe #{type} aan.
         form(method='post' action=`/backoffice/users`)
-          .flex.column.start
+          .flex.column.start.form-item
             label Naam
             input(type="text" placeholder="Naam" name="name" value="")
-            input(type="hidden" placeholder="Naam" name="active" value="false")
-            input(type="hidden" placeholder="Naam" name="_role" value=`${type}`)
-          .flex.column.start
+            input(type="hidden" name="active" value="false")
+            input(type="text" id="role" name="_role")
+          .flex.column.start.form-item
             label Geboortedatum
             input(type="date" placeholder="Geboortedatum" name="birthday" value="")
-          .flex.column.start
+          .flex.column.start.form-item
             label Woonplaats
             input(type="text" placeholder="Woonplaats" name="origin" value="")
-          .flex.column.start
+          .flex.column.start.form-item
             label Over persoon
             input(type="text" placeholder="Over persoon" name="about" value="")
-          .flex.justified-space 
-            button.btn(type='submit' onclick="hide('type')") Yes I want to create this user.
-            button.btn(onclick="hide('alert')") Annuleer. 
+          button.btn(type='submit' onclick="hide('type')") Klaar
       
   script.
     var popup = function (type) {
@@ -90,11 +90,13 @@ block content
         var alert = document.querySelector('#alert');
             alert.classList.remove('hide');
             alert.classList.add('visible');
-      } else if(type == 'type'){
+      } else if(type == 'student' || type == 'teacher'){
          var create = document.querySelector('#create');
               create.classList.remove('hide');
               create.classList.add('visible');
-      }
+              var input = document.querySelector('#role');
+              input.value = type;
+      } 
     }
     var hide = function (type) {
       if(type == 'alert'){
