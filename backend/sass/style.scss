@@ -1,6 +1,7 @@
 
 @import 'base';
 @import '_helpers';
+@import '_mixin';
 
 h1, h2, h3, h4, h5, h6, p, span, a {
     font-family: $font-family;
@@ -9,7 +10,9 @@ h1, h2, h3, h4, h5, h6, p, span, a {
 h1, h2, h3, h4, h5, h6 {
     font-weight: $bold;
 }
-
+h1 {
+    font-size: 25px;
+}
 p, span, a {
     font-weight: $regular;
 }
@@ -18,41 +21,42 @@ body{
     margin: 0;
     padding: 0;
     .header {
-        -webkit-box-sizing: border-box !important;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box !important;
+        @include box-sizing;
         padding: 0 35px;
-        height: 44px;
-        background: $gray;
-        box-shadow: 0px 3px 2px #d1d1d1;
+        height: 50px;
+        background: $black;
+        text-align: right;
+        /*box-shadow: 0px 3px 2px $shadow;*/
         img {
             height: 30px;
+            margin: 0 0 0 20px;
         }
         .title {
             text-transform: uppercase;
             font-weight: $bold;
+            color: $white;
         }
     }
     .container {
         .navigation {
-            box-shadow: 2px 3px 2px #d1d1d1;
+           /* box-shadow: 2px 3px 2px $shadow;*/
             background: $light-blue;
             height: calc(100vh - 40px);
             width: 100px;
             a {
                 color: $white;
                 text-decoration: none;
-                -webkit-box-sizing: border-box !important;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box !important;
+                @include box-sizing(); 
                 width: 100px;
                 height: 100px;
-                background: $light-blue;
+                background: $black;
                 border-bottom: 1px solid #fff;
                 text-align: center;
                 padding: 34px;
                 cursor: pointer;
-
+                &:hover {
+                    background: $light-blue;
+                }
                 i {
                     color: $white;
                     font-size: 29px;
@@ -82,114 +86,134 @@ body{
                 -webkit-align-self: auto;
                 -ms-flex-item-align: auto;
                 align-self: auto;
+                background: $black;
             }
         }
         .content{
-            -webkit-box-sizing: border-box !important;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box !important;
-            padding: 30px;
             width: 100%;
-            .flex h1 {
-                font-weight: 800;
-                text-align: center;
-                width: 50%;
-                font-size: 20px;
-                text-transform: uppercase;
-                background: orange;
-                padding: 5px;
-                border: 1px solid white;
-                color: white;
-                margin: 0;
-                box-shadow: 2px 1px 6px #dfdfdf;
-            }
-            table {
+            .users {
+                @include box-sizing;
+                padding: 30px;
                 width: 100%;
-                thead {
-                    background: $gray;
-                    height: 40px;
-                    tr {
-                        box-shadow: 2px 1px 6px #dfdfdf;
-                        th{
-                            font-family: $font-family;
-                            font-weight: $thin;
-                            font-size: 10px;
-                        }
-                    }
-                } 
-                tbody {
-                    tr {
-                        box-shadow: 2px 1px 6px #dfdfdf;
-                        td {
-                            font-family: $font-family;
-                            font-weight: $thin;
-                            padding: 3px;
-                            &.actions {
-                                text-align: end;
-                                i {
-                                    font-size: 19px;
-                                    margin: 0 10px;
-                                }
-                            }
-                            .active {
-                                background: rgb(24, 237, 71);
-                                height: 15px;
-                                width: 15px;
-                                border-radius: 100%;
-                                margin: 10px calc(50% - 10px);
-                                }
-                            .inactive {
-                                background: rgb(240, 20, 71);
-                                height: 15px;
-                                width: 15px;
-                                border-radius: 100%;
-                                margin: 10px calc(50% - 10px);
-                            }
-                        }
+                .btn {
+                    border: none;
+                    border-radius: 50px;
+                    background: $dark-blue;
+                    padding: 10px 20px;
+                    color: $white;
+                    margin: 20px 10px 20px 0;
+                    &:hover {
+                        background: $light-blue;
                     }
                 }
-            }
-            .flex table {
-                width: 50%;
-                -webkit-order: 0;
-                -ms-flex-order: 0;
-                order: 0;
-                -webkit-flex: 1 1 auto;
-                -ms-flex: 1 1 auto;
-                flex: 1 1 auto;
-                -webkit-align-self: auto;
-                -ms-flex-item-align: auto;
-                align-self: auto;
-            }
-            #alert, #create {
-                -webkit-box-sizing: border-box !important;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box !important;
-                position: absolute;
-                top: 44px;
-                bottom: 0;
-                left: 100px;
-                right: 0;
-                background: rgba(23, 23, 23, 0.7);
-                &.visible {
-                    display: block;
-                }
-                &.hide {
-                    display: none;
-                }
-                .box {
-                    -webkit-box-sizing: border-box !important;
-                    box-sizing: border-box !important;
-                    background: #fff;
-                    width: 30%;
-                    margin: 10% 35%;
-                    padding: 50px;
+                .flex h1 {
+                    font-weight: 800;
                     text-align: center;
-                    form {
-                        label {
-                            font-family: $font-family;
-                            font-size: 13px;
-                            font-weight: $bold;
+                    width: 50%;
+                    font-size: 20px;
+                    text-transform: uppercase;
+                    background: $red;
+                    padding: 7px;
+                    margin: 1px;
+                    color: white;
+                    box-shadow: 2px 1px 3px $shadow;
+                }
+                table {
+                    width: 100%;
+                    thead {
+                        background: $gray;
+                        height: 40px;
+                        tr {
+                            box-shadow: 2px 1px 3px $shadow;
+                            th{
+                                font-family: $font-family;
+                                font-weight: $thin;
+                                font-size: 12px;
+                            }
+                        }
+                    } 
+                    tbody {
+                        tr {
+                            box-shadow: 2px 1px 3px $shadow;
+                            td {
+                                font-family: $font-family;
+                                font-weight: $thin;
+                                padding: 3px;
+                                &.actions {
+                                    text-align: center;
+                                    button {
+                                        border: none;
+                                        background: none;
+                                        i {
+                                            font-size: 19px;
+                                            margin: 0 10px;
+                                        }
+                                    }
+                                    
+                                }
+                                .active {
+                                    background: rgb(24, 237, 71);
+                                    height: 15px;
+                                    width: 15px;
+                                    border-radius: 100%;
+                                    margin: 10px calc(50% - 10px);
+                                    }
+                                .inactive {
+                                    background: rgb(240, 20, 71);
+                                    height: 15px;
+                                    width: 15px;
+                                    border-radius: 100%;
+                                    margin: 10px calc(50% - 10px);
+                                }
+                            }
+                        }
+                    }
+                }
+                .flex table {
+                    width: 50%;
+                    -webkit-order: 0;
+                    -ms-flex-order: 0;
+                    order: 0;
+                    -webkit-flex: 1 1 auto;
+                    -ms-flex: 1 1 auto;
+                    flex: 1 1 auto;
+                    -webkit-align-self: auto;
+                    -ms-flex-item-align: auto;
+                    align-self: auto;
+                }
+                #alert, #create {
+                    @include box-sizing;
+                    position: absolute;
+                    top: 44px;
+                    bottom: 0;
+                    left: 100px;
+                    right: 0;
+                    background: rgba(23, 23, 23, 0.7);
+                    &.visible {
+                        display: block;
+                    }
+                    &.hide {
+                        display: none;
+                    }
+                    .box {
+                        @include box-sizing;
+                        background: #fff;
+                        width: 30%;
+                        margin: 10% 35%;
+                        padding: 50px;
+                        text-align: center;
+                        form {
+                            label {
+                                font-family: $font-family;
+                                font-size: 13px;
+                                font-weight: $bold;
+                            }
+                            button {
+                                border: none;
+                                border-radius: 50px;
+                                background: $orange;
+                                padding: 10px 20px;
+                            }
                         }
                         button {
                             border: none;
@@ -198,37 +222,244 @@ body{
                             padding: 10px 20px;
                         }
                     }
-                    button {
+                }
+                #create {
+                    .box {
+                        margin: 4% 30%;
+                        height: 70%;
+                        form {
+                            .form-item {
+                                margin: 15px 0;
+                            }
+                            button {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .btn-close {
+                        position: absolute;
+                        font-size: 20px;
+                        background: none;
                         border: none;
-                        border-radius: 50px;
-                        background: $orange;
-                        padding: 10px 20px;
+                        color: $orange;
+                        margin: 5% 0 0 57%;
+                        cursor: pointer;
+                    }
+                }
+            } 
+            .events {
+                @include box-sizing;
+                padding: 50px;
+                table {
+                    width: 100%;
+                    thead {
+                        background: $red;
+                        color: $white;
+                        height: 40px;
+                        tr {
+                            box-shadow: 2px 1px 3px $shadow;
+                            th{
+                                font-family: $font-family;
+                                font-weight: $regular;
+                                font-size: 13px;
+                                text-transform: uppercase;
+                            }
+                        }
+                    } 
+                    tbody {
+                        tr {
+                            height: 70px;
+                            box-shadow: 2px 1px 3px $shadow;
+                            td {
+                                font-family: $font-family;
+                                font-weight: $thin;
+                                padding: 3px;
+                                &.date, &.start, &.end {
+                                    text-align: center;
+                                }
+                            }
+                        }
                     }
                 }
             }
-            #create {
-                .box {
-                    margin: 4% 30%;
-                    height: 70%;
-                    form {
-                        .form-item {
-                            margin: 15px 0;
-                        }
-                        button {
-                            width: 100%;
+            .dashboard{
+                width: 100%;
+                .dashboard-events {
+                    @include box-sizing;
+                    border-right: 1px solid $black;
+                    -webkit-order: 0;
+                    -ms-flex-order: 0;
+                    order: 0;
+                    -webkit-flex: 0 1 auto;
+                    -ms-flex: 0 1 auto;
+                    flex: 0 1 auto;
+                    h1 {
+                        padding-right: 20px;
+                        padding-bottom: 10px;
+                        text-align: right;
+                        border-bottom: 1px solid $black;
+                    }
+                    .list {
+                        width: 500px;
+                        margin: 10px;
+                        padding: 0;
+                        .item {
+                            @include box-sizing;
+                            margin-bottom: 10px;
+                            box-shadow: 1px 3px 3px $shadow;
+                            background: $white;
+                            .date{
+                                @include box-sizing;
+                                padding: 15px 15px;
+                                text-align: left;
+                                background: $orange;
+                                -webkit-order: 0;
+                                -ms-flex-order: 0;
+                                order: 0;
+                                -webkit-flex: 0 1 auto;
+                                -ms-flex: 0 1 auto;
+                                flex: 0 1 auto;
+                                .day {
+                                    text-transform: uppercase;
+                                    font-weight: 100;
+                                    color: $white;
+                                    width: 100px;
+                                    font-size: 12px;
+                                }
+                                p {
+                                    font-weight: $bold;
+                                    color: $white;
+                                    margin: 0;
+                                    font-size: 18px;
+                                    width: 100px;
+                                }
+                            }
+                            .info{
+                                -webkit-order: 0;
+                                -ms-flex-order: 0;
+                                order: 0;
+                                -webkit-flex: 0 1 auto;
+                                -ms-flex: 0 1 auto;
+                                flex: 0 1 auto;
+                                .name {
+                                    @include box-sizing;
+                                    font-weight: $bold;
+                                    padding: 15px 15px 5px 15px;
+                                    text-transform: uppercase;
+                                }
+                                .description {
+                                    @include box-sizing;
+                                    font-weight: $regular;
+                                    padding: 10px 15px 15px 15px;
+                                }
+                            }
                         }
                     }
                 }
-                .btn-close {
-                    position: absolute;
-                    font-size: 20px;
-                    background: none;
-                    border: none;
-                    color: $orange;
-                    margin: 5% 0 0 57%;
-                    cursor: pointer;
+                .column {
+                    -webkit-order: 0;
+                    -ms-flex-order: 0;
+                    order: 0;
+                    -webkit-flex: 4 1 auto;
+                    -ms-flex: 4 1 auto;
+                    flex: 4 1 auto;
+                    .dashboard-users{
+                        -webkit-order: 0;
+                        -ms-flex-order: 0;
+                        order: 0;
+                        -webkit-flex: 1 1 auto;
+                        -ms-flex: 1 1 auto;
+                        flex: 1 1 auto;
+                        -webkit-align-self: stretch;
+                        -ms-flex-item-align: stretch;
+                        align-self: stretch;
+                        h1 {
+                            text-align: right;
+                            padding-right: 35px;
+                            padding-bottom: 10px;
+                            border-bottom: 1px solid $black;
+                        }
+                        table {
+                            width: calc(50% - 80px);
+                            margin: 0 20px;
+                            tbody {
+                                tr {
+                                    box-shadow: 2px 1px 3px $shadow;
+                                    td {
+                                        font-family: $font-family;
+                                        font-weight: $thin;
+                                        padding: 3px;
+                                        &.active {
+                                            border-right: 1px solid $shadow;
+                                            -webkit-order: 0;
+                                            -ms-flex-order: 0;
+                                            order: 0;
+                                            -webkit-flex: 1 1 auto;
+                                            -ms-flex: 1 1 auto;
+                                            flex: 1 1 auto;
+                                            -webkit-align-self: auto;
+                                            -ms-flex-item-align: auto;
+                                            align-self: auto;
+                                            max-width: 35px;
+                                            min-width: 35px;
+                                            -webkit-align-self: center;
+                                            -ms-flex-item-align: center;
+                                            align-self: center;
+                                        }
+                                        &.name {
+                                            -webkit-order: 0;
+                                            -ms-flex-order: 0;
+                                            order: 0;
+                                            -webkit-flex: 5 1 auto;
+                                            -ms-flex: 5 1 auto;
+                                            flex: 5 1 auto;
+                                            -webkit-align-self: auto;
+                                            -ms-flex-item-align: auto;
+                                            align-self: auto;
+                                            -webkit-align-self: center;
+                                            -ms-flex-item-align: center;
+                                            align-self: center;
+                                            padding-left: 15px;
+                                        }
+                                        .active {
+                                            background: rgb(24, 237, 71);
+                                            height: 15px;
+                                            width: 15px;
+                                            border-radius: 100%;
+                                            margin: 10px;
+                                        }
+                                        .inactive {
+                                            background: rgb(240, 20, 71);
+                                            height: 15px;
+                                            width: 15px;
+                                            border-radius: 100%;
+                                            margin: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .dashboard-beacons{
+                        -webkit-order: 0;
+                        -ms-flex-order: 0;
+                        order: 0;
+                        -webkit-flex: 1 1 auto;
+                        -ms-flex: 1 1 auto;
+                        flex: 1 1 auto;
+                        -webkit-align-self: stretch;
+                        -ms-flex-item-align: stretch;
+                        align-self: stretch;
+                        h1 {
+                            padding-right: 35px;
+                            padding-bottom: 10px;
+                            text-align: right;
+                            border-bottom: 1px solid $black;
+                        }
+                    }
                 }
             }
         }
+
     }
 }

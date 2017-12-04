@@ -11,12 +11,12 @@ var express = require('express'),
     User = require('./models/userModel')
     Events = require('./models/eventModel')
     ; //created model loading here
-
+  
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/Tododb'); 
 
-
+app.locals.moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

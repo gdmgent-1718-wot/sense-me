@@ -9,8 +9,7 @@ var EventSchema = new Schema({
     unique: true
   },
   description: {
-    type: Boolean,
-    default: true
+    type: String,
   },
   date: {
     type: Date,
@@ -22,7 +21,6 @@ var EventSchema = new Schema({
   },
   stop: {
     type: String,
-    required: 'Kindly enter a stop time',
   },
   location: {
     type: String,

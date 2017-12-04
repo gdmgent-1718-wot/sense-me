@@ -1,15 +1,23 @@
 'use strict';
 var mongoose = require('mongoose');
+var Events = mongoose.model('Events', 'EventSchema');
 
 exports.get_index = (req, res) => {
   var event = true;
-  res.render('events/index', {'title': 'evenementen', event: event })
-};
-exports.create_a_role = function(req, res) {
-  var new_role = new Role(req.body);
-  new_role.save(function(err, role) {
+  Events.find({}, function(err, events) {
     if (err)
       res.send(err);
-    res.json(role);
+    res.render('events/index', {'title': 'evenementen', events: events, event: event })
+  });
+ 
+};
+
+exports.create_a_event = function(req, res) {
+  var new_event = new Events(req.body);
+  new_event.save(function(err, event) {
+    if (err)
+      res.send(err);
+    res.json(event);
   });
 };
+

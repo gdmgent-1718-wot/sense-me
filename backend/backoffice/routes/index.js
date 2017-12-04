@@ -37,6 +37,7 @@ module.exports = function(app) {
    * Events
    */
   app.route('/backoffice/events')
+  .post(events.create_a_event)
   .get(events.get_index);
 
 

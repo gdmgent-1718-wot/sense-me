@@ -1,3 +1,39 @@
 extends layout
 
 block content
+  .dashboard
+    .flex
+      .dashboard-events.flex-child.strech
+        h1 EVENEMENTEN
+        .flex.column.list
+          each event, i in events
+            .item.flex
+              .flex.column.date
+                span.day=moment(event.date).format("dddd")
+                p=moment(event.date).format("DD.MM.YYYY")
+              .flex.column.info
+                span.name=event.name
+                span.description=event.description
+      .flex.column.flex-child.strech
+        .dashboard-users
+          h1 USERS
+          .flex
+            table
+              tbody     
+                each user, i in users
+                  if i < 10
+                    tr.flex
+                      td.active
+                        div(class=user.active == true ? 'active': 'inactive') 
+                      td.name(id=`${user._id}`)= user.name
+            table
+              tbody     
+                each user, i in users
+                  if i > 10
+                    tr.flex
+                      td.active
+                        div(class=user.active == true ? 'active': 'inactive') 
+                      td.name(id=`${user._id}`)= user.name
+                  
+        .dashboard-beacons
+          h1 BEACONS

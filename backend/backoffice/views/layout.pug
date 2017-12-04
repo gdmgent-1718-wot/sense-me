@@ -7,16 +7,17 @@ html
     link(rel='stylesheet', href='../../css/style.min.css')
     link(rel='stylesheet', href='../../css/font-awesome/css/font-awesome.min.css')
   body  
-    .header(class="flex justified-space centered")
-        img(src="../../css/assets/logo.png")
-        span.title=title    
+    .header.flex.justified-end.centered
+      span.title=title    
+      img(src="../../css/assets/logo.png")
+        
     .container(class="flex")  
       .navigation(class="flex column justified-start")
        a(class=dashboard ? 'active': 'no', href="http://localhost:3000/backoffice")
         i.fa.fa-tachometer(aria-hidden="true")
        a(class=event ? 'active': 'no', href="http://localhost:3000/backoffice/events")
         i.fa.fa-calendar(aria-hidden="true")
-       a(class=users ? 'active': 'no', href="http://localhost:3000/backoffice/users")
+       a(class=users == true ? 'active': 'no', href="http://localhost:3000/backoffice/users")
         i.fa.fa-users(aria-hidden="true") 
        span.padded
        a

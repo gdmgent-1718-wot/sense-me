@@ -10,17 +10,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "grunt-contrib-sass": "^1.0.0",
-    "nodemon": "^1.12.1",
-    "grunt": "~0.4.5",
-    "grunt-postcss": "latest",
     "autoprefixer": "latest",
+    "grunt": "~0.4.5",
     "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest"
+    "grunt-contrib-watch": "latest",
+    "grunt-postcss": "latest",
+    "nodemon": "^1.12.1"
   },
   "dependencies": {
     "express": "^4.16.2",
+    "moment": "^2.19.3",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.5",
     "pug": "2.0.0-beta11"
