@@ -36,8 +36,6 @@ exports.list_all_users = (req, res) => {
     var users = true;
     res.render('users/index', { title: 'users', teachers: teachers, students: students, users: users });
   }
-  
-  
 };
 
 exports.create_a_user = (req, res) => {
@@ -89,6 +87,6 @@ exports.delete_a_user = (req, res) => {
   }, (err, user) => {
     if (err)
       res.send(err);
-    res.json({ message: 'User successfully deleted' });
-  });
+    res.redirect('/backoffice/users');
+  })
 };

@@ -3,6 +3,7 @@ extends ../layout
 block content
   - var userId = "id"
   - var userName = "name"
+  - var deleted = false
   .flex
     h1 Studenten
     h1 Docenten
@@ -15,19 +16,18 @@ block content
           th actie
       tbody     
         each user, i in students
-          tr
-            td
-              div(class=user.active == true ? 'active': 'inactive')
-            td= user.name
-            td.actions
-              button(type='button' class='btn-icon' onclick='popup()') 
-                i.fa.fa-pencil
-              button(type='button' class='btn-icon' onclick='popup()')
-                i.fa.fa-trash 
-                  - userId = user._id
-                  - userName = user.name
-               
-
+          if deleted === false
+            tr
+              td
+                div(class=user.active == true ? 'active': 'inactive')
+              td(id=`${user._id}`)= user.name
+              td.actions
+                button(type='button' class='btn-icon' onclick='popup()') 
+                  i.fa.fa-pencil
+                button(type='button' class='btn-icon' onclick='popup()')
+                  i.fa.fa-trash 
+                    - userId = user._id
+                    - userName = user.name
     table
       thead
         tr
@@ -36,23 +36,23 @@ block content
           th actie
       tbody
         each user, i in teachers
-          tr
-            td
-              div(class=user.active == true ? 'active': 'inactive')
-            td= user.name
-            td.actions
-              button(type='button' class='btn-icon' onclick='popup()') 
-                i.fa.fa-pencil
-              button(type='button' class='btn-icon' onclick='popup()')
-                i.fa.fa-trash 
-                  - userId = user._id
-                  - userName = user.name
+            tr
+              td
+                div(class=user.active == true ? 'active': 'inactive')
+              td(id=`${user._id}`)= user.name
+              td.actions
+                button(type='button' class='btn-icon' onclick='popup()') 
+                  i.fa.fa-pencil
+                button(type='button' class='btn-icon' onclick='popup()')
+                  i.fa.fa-trash 
+                    - userId = user._id
+                    - userName = user.name
 
   #alert.hide
     .box
       p Are you sure you want to delete #{userName}?
         form(method='post' action=`/backoffice/users/${userId}/delete`)
-          button.btn(type='submit') Yes I want to delete this user.
+          button.btn(type='submit' onclick='hide()') Yes I want to delete this user.
         button.btn(onclick='hide()') No, do not delete this person. 
       
   script.
@@ -62,8 +62,17 @@ block content
       alert.classList.add('visible');
     }
     var hide = function () {
-        var alert = document.querySelector('#alert');
-        console.log(alert);
-        alert.classList.remove('visible');
-        alert.classList.add('hide');
+      var alert = document.querySelector('#alert');
+          alert.classList.remove('visible');
+          alert.classList.add('hide');
+  
+    }
+    var doHide = function(id){
+        hide();
+        hideRecord(id);
+      }
+    var hideRecord = function (id) {
+      console.log('id: ', id);
+      var record = document.querySelector('#' + id);
+      record.classList.add('hide');
     }
