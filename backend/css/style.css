@@ -305,11 +305,20 @@ body {
       -webkit-box-sizing: border-box;
       -ms-box-sizing: border-box;
       box-sizing: border-box;
-      padding: 50px; }
+      padding: 25px 50px; }
+      body .container .content .events .btn {
+        border: none;
+        border-radius: 50px;
+        background: #2B98D4;
+        padding: 10px 20px;
+        color: #ffffff;
+        margin: 20px 10px 20px 0; }
+        body .container .content .events .btn:hover {
+          background: #73CAEB; }
       body .container .content .events table {
         width: 100%; }
         body .container .content .events table thead {
-          background: #ff4c34;
+          background: #FFA734;
           color: #ffffff;
           height: 40px; }
           body .container .content .events table thead tr {
@@ -325,9 +334,12 @@ body {
           -webkit-box-shadow: 2px 1px 3px #d1d1d1;
                   box-shadow: 2px 1px 3px #d1d1d1; }
           body .container .content .events table tbody tr td {
+            -webkit-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
             font-family: Arial, "Helvetica";
             font-weight: 200;
-            padding: 3px; }
+            padding: 3px 10px; }
             body .container .content .events table tbody tr td.date, body .container .content .events table tbody tr td.start, body .container .content .events table tbody tr td.end {
               text-align: center; }
     body .container .content .dashboard {
@@ -344,29 +356,27 @@ body {
         -webkit-box-flex: 0;
                 flex: 0 1 auto; }
         body .container .content .dashboard .dashboard-events h1 {
-          padding-right: 20px;
+          padding-right: 35px;
           padding-bottom: 10px;
           text-align: right;
           border-bottom: 1px solid #1C1C1B; }
         body .container .content .dashboard .dashboard-events .list {
           width: 500px;
-          margin: 10px;
+          margin: 20px;
           padding: 0; }
           body .container .content .dashboard .dashboard-events .list .item {
             -webkit-box-sizing: border-box;
             -ms-box-sizing: border-box;
             box-sizing: border-box;
-            margin-bottom: 10px;
-            -webkit-box-shadow: 1px 3px 3px #d1d1d1;
-                    box-shadow: 1px 3px 3px #d1d1d1;
-            background: #ffffff; }
+            margin-bottom: 5px;
+            background: #f0f0f0; }
             body .container .content .dashboard .dashboard-events .list .item .date {
               -webkit-box-sizing: border-box;
               -ms-box-sizing: border-box;
               box-sizing: border-box;
-              padding: 15px 15px;
+              padding: 20px 15px;
               text-align: left;
-              background: #FFA734;
+              background: #2B98D4;
               -ms-flex-order: 0;
               -webkit-box-ordinal-group: 1;
                       order: 0;
@@ -397,14 +407,14 @@ body {
                 -ms-box-sizing: border-box;
                 box-sizing: border-box;
                 font-weight: 800;
-                padding: 15px 15px 5px 15px;
+                padding: 20px 15px 5px 15px;
                 text-transform: uppercase; }
               body .container .content .dashboard .dashboard-events .list .item .info .description {
                 -webkit-box-sizing: border-box;
                 -ms-box-sizing: border-box;
                 box-sizing: border-box;
                 font-weight: 400;
-                padding: 10px 15px 15px 15px; }
+                padding: 5px 15px 20px 15px; }
       body .container .content .dashboard .column {
         -ms-flex-order: 0;
         -webkit-box-ordinal-group: 1;
@@ -428,8 +438,8 @@ body {
             padding-bottom: 10px;
             border-bottom: 1px solid #1C1C1B; }
           body .container .content .dashboard .column .dashboard-users table {
-            width: calc(50% - 80px);
-            margin: 0 20px; }
+            width: calc(50% - 100px);
+            margin: 5px 50px; }
             body .container .content .dashboard .column .dashboard-users table tbody tr {
               -webkit-box-shadow: 2px 1px 3px #d1d1d1;
                       box-shadow: 2px 1px 3px #d1d1d1; }

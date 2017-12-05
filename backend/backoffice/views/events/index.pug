@@ -2,6 +2,7 @@ extends ../layout
 
 block content
   .events
+    button.btn Voeg evenement toe
     table
       thead
         tr
@@ -15,12 +16,12 @@ block content
       tbody
         each event, i in events
           tr  
-              td=moment(event.date).format("DD.MM.YYYY")
+              td.date=moment(event.date).format("DD.MM.YYYY")
               td=event.name
               td=event.description 
               td=event.location
-              td=event.start
-              td=event.stop
+              td.start=event.start
+              td.end=event.stop
               td.m
                   i.fa.fa-pencil
                   i.fa.fa-trash

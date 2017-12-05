@@ -26,7 +26,6 @@ body{
         height: 50px;
         background: $black;
         text-align: right;
-        /*box-shadow: 0px 3px 2px $shadow;*/
         img {
             height: 30px;
             margin: 0 0 0 20px;
@@ -249,11 +248,22 @@ body{
             } 
             .events {
                 @include box-sizing;
-                padding: 50px;
+                padding: 25px 50px;
+                .btn {
+                    border: none;
+                    border-radius: 50px;
+                    background: $dark-blue;
+                    padding: 10px 20px;
+                    color: $white;
+                    margin: 20px 10px 20px 0;
+                    &:hover {
+                        background: $light-blue;
+                    }
+                }
                 table {
                     width: 100%;
                     thead {
-                        background: $red;
+                        background: $orange;
                         color: $white;
                         height: 40px;
                         tr {
@@ -271,9 +281,10 @@ body{
                             height: 70px;
                             box-shadow: 2px 1px 3px $shadow;
                             td {
+                                @include box-sizing;
                                 font-family: $font-family;
                                 font-weight: $thin;
-                                padding: 3px;
+                                padding: 3px 10px;
                                 &.date, &.start, &.end {
                                     text-align: center;
                                 }
@@ -294,25 +305,24 @@ body{
                     -ms-flex: 0 1 auto;
                     flex: 0 1 auto;
                     h1 {
-                        padding-right: 20px;
+                        padding-right: 35px;
                         padding-bottom: 10px;
                         text-align: right;
                         border-bottom: 1px solid $black;
                     }
                     .list {
                         width: 500px;
-                        margin: 10px;
+                        margin: 20px;
                         padding: 0;
                         .item {
                             @include box-sizing;
-                            margin-bottom: 10px;
-                            box-shadow: 1px 3px 3px $shadow;
-                            background: $white;
-                            .date{
+                            margin-bottom: 5px;
+                            background: rgba(240, 240, 240, 1);
+                            .date {
                                 @include box-sizing;
-                                padding: 15px 15px;
+                                padding: 20px 15px;
                                 text-align: left;
-                                background: $orange;
+                                background: $dark-blue;
                                 -webkit-order: 0;
                                 -ms-flex-order: 0;
                                 order: 0;
@@ -344,13 +354,13 @@ body{
                                 .name {
                                     @include box-sizing;
                                     font-weight: $bold;
-                                    padding: 15px 15px 5px 15px;
+                                    padding: 20px 15px 5px 15px;
                                     text-transform: uppercase;
                                 }
                                 .description {
                                     @include box-sizing;
                                     font-weight: $regular;
-                                    padding: 10px 15px 15px 15px;
+                                    padding: 5px 15px 20px 15px;
                                 }
                             }
                         }
@@ -380,8 +390,8 @@ body{
                             border-bottom: 1px solid $black;
                         }
                         table {
-                            width: calc(50% - 80px);
-                            margin: 0 20px;
+                            width: calc(50% - 100px);
+                            margin: 5px 50px;
                             tbody {
                                 tr {
                                     box-shadow: 2px 1px 3px $shadow;

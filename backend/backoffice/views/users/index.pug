@@ -1,16 +1,10 @@
 extends ../layout
 
 block content
-  - var userId = "id"
-  - var userName = "name"
   .users
     .flex 
-      button(type='button' class='btn' onclick="popup('teacher')") Docent aanmaken 
-      - var type = "teacher";
-
       button(type='button' class='btn' onclick="popup('student')") Student aanmaken
-      - type = "student";
-
+      button(type='button' class='btn' onclick="popup('teacher')") Docent aanmaken 
     .flex
       h1 Studenten
       h1 Docenten
@@ -21,17 +15,15 @@ block content
             th actief
             th naam
             th actie
-        tbody     
+        tbody.studentBody     
           each user, i in students
             tr
               td
                 div(class=user.active == true ? 'active': 'inactive')
-              td(id=`${user._id}`)= user.name
+              td= user.name
               td.actions
-                button(type='button' class='btn-icon' onclick="popup('alert')")
+                button(type='button' id=`${user._id}` class='btn-icon')
                   i.fa.fa-trash 
-                    - userId = user._id
-                    - userName = user.name
 
       table
         thead
@@ -39,25 +31,23 @@ block content
             th actief
             th naam
             th actie
-        tbody
+        tbody.teacherBody
           each user, i in teachers
-              tr
+              tr(id=`${user._id}`)
                 td
                   div(class=user.active == true ? 'active': 'inactive')
                 td(id=`${user._id}`)= user.name
                 td.actions
-                  button(type='button' class='btn-icon' onclick="popup('alert')")
+                  button(type='button' id=`${user._id}` class='btn-icon')
                     i.fa.fa-trash 
-                      - userId = user._id
-                      - userName = user.name
 
     #alert.hide
       .box
-        p Bent u zeker dat u #{userName} wil verwijderen?
+        p.removeUser
         .flex.justified-space 
-          form(method='post' action=`/backoffice/users/${userId}/delete`)
-            button.btn(type='submit' onclick="hide('alert')") Yes I want to delete this user.
-          button.btn(onclick="hide('alert')") No, do not delete this person. 
+          form(method='post' action="" class="form")
+            button.btn(type='submit' onclick="hide('alert')") verwijderen
+          button.btn(onclick="hide('alert')") Annuleer
 
     #create.hide
       button.btn-close(onclick="hide('type')") 
@@ -82,12 +72,35 @@ block content
             button.btn(type='submit' onclick="hide('type')") Klaar
         
     script.
-      var popup = function (type) {
-        if(type == 'alert'){
+      var students = document.querySelector('.studentBody'); 
+      var teachers = document.querySelector('.teacherBody');
+
+      students.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON'){
+            var id = e.target.id;
+            remove(id);
+        }
+      });
+
+      teachers.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON'){
+            var id = e.target.id;
+            remove(id);
+        }
+      });
+
+      var remove = function(id){
           var alert = document.querySelector('#alert');
               alert.classList.remove('hide');
               alert.classList.add('visible');
-        } else if(type == 'student' || type == 'teacher'){
+          var p = document.querySelector('.removeUser');
+          p.innerHTML = "Bent u zeker dat u deze gebruiker wilt verwijderen?";
+          var form = document.querySelector('.form');
+          form.action = `/backoffice/users/${id}/delete`;
+      }
+
+      var popup = function (type) {
+         if(type == 'student' || type == 'teacher'){
           var create = document.querySelector('#create');
                 create.classList.remove('hide');
                 create.classList.add('visible');
@@ -95,6 +108,7 @@ block content
                 input.value = type;
         } 
       }
+
       var hide = function (type) {
         if(type == 'alert'){
           var alert = document.querySelector('#alert');
@@ -105,13 +119,4 @@ block content
               create.classList.remove('visible');
               create.classList.add('hide');
         }
-      }
-      var doHide = function(id){
-          hide();
-          hideRecord(id);
-        }
-      var hideRecord = function (id) {
-        console.log('id: ', id);
-        var record = document.querySelector('#' + id);
-        record.classList.add('hide');
       }
