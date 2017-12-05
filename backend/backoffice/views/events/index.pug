@@ -59,6 +59,7 @@ block content
             label Eind tijd
             input(type="time" name="stop" value="")
           button.btn(type='submit' onclick="hide('type')") Toevoegen
+  
   script.
     var events = document.querySelector('.eventBody');
     events.addEventListener('click', function(e) {
@@ -72,7 +73,13 @@ block content
         edit(id);
       }
     });
-  
+
+    var add = document.querySelector('#add');
+    add.addEventListener('click', function(e) {
+      var create = document.querySelector('#create');
+          create.classList.remove('hide');
+          create.classList.add('visible')
+    }); 
     var remove = function(id){
       var alert = document.querySelector('#alert');
           alert.classList.remove('hide');
