@@ -39,7 +39,14 @@ module.exports = function(app) {
   app.route('/backoffice/events')
     .post(events.create_a_event)
     .get(events.get_index);
+    
+  app.route('/backoffice/events/:eventId')
+    .get(events.get_a_event);
+
   app.route('/backoffice/events/:eventId/delete')
     .post(events.delete_a_event);
+  
+  app.route('/backoffice/events/:eventId/update')
+    .post(events.update_a_event);
 };
 

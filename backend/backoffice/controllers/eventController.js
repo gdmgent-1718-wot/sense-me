@@ -12,6 +12,12 @@ exports.get_index = (req, res) => {
  
 };
 
+exports.get_a_event = function(req, res){
+  Events.findById({_id: req.params.eventId}, function(err, event) {
+    if (err) res.send(err);
+    res.render('events/update', {'title': 'evenementen', item: event, event: true})
+  })
+}
 exports.create_a_event = function(req, res) {
   var new_event = new Events(req.body);
   new_event.save(function(err, event) {
@@ -21,6 +27,14 @@ exports.create_a_event = function(req, res) {
   });
 };
 
+
+exports.update_a_event = (req, res) => {
+  Events.findOneAndUpdate({_id: req.params.eventId}, req.body, {new: true}, (err, event) => {
+    if (err)
+      res.send(err);
+    res.redirect('/backoffice/events');
+  });
+};
 
 exports.delete_a_event = (req, res) => {
   Events.remove({

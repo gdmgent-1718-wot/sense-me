@@ -287,6 +287,62 @@ body{
                     }
                 }
             } 
+            .events-update {
+                padding: 50px 90px;
+                @include box-sizing;
+                a {
+                    @include box-sizing;
+                    font-size: 23px;
+                    padding: 14px;
+                    color: $white;
+                    text-decoration: none;
+                    background: $dark-blue;
+                    border-radius: 50px;
+                    width: 50px;
+                    height: 50px;
+                    &:hover {
+                        background: $light-blue;
+                    }
+                }
+                form {
+                    .form-item{
+                        margin: 10px 0;
+                        label {
+                            font-family: $font-family;
+                            font-size: 10px;
+                            font-weight: $bold;
+                            margin-bottom: 5px;
+                            margin-left: 5px;
+                            text-transform: uppercase;
+                        }
+                        input {
+                            font-family: $font-family;
+                            border-radius: 30px;
+                            border: 1px solid $shadow;
+                            @include box-sizing;
+                            padding: 5px 10px;
+                            width: 100%;
+                            font-size: 12px;
+                        }
+                        textarea {
+                            font-size: 12px;
+                            font-family: $font-family;
+                            border: 1px solid $shadow;
+                            @include box-sizing;
+                            padding: 5px 10px;
+                            width: 100%;
+                        }
+                    }
+                    button {
+                        opacity: 0.8;
+                        border: none;
+                        border-radius: 50px;
+                        padding: 10px 20px;
+                        background: $orange;
+                        width: 100%;
+                    }
+                }
+            }
             .events {
                 @include box-sizing;
                 padding: 25px 50px;
@@ -361,14 +417,14 @@ body{
                     }
                     .box {
                         @include box-sizing;
-                        background: #fff;
+                        background: $white;
                         width: 50%;
                         margin: 1% 25%;
                         padding: 20px 100px;
                         text-align: center;
                         p {
                             text-transform: uppercase;
-                            border-bottom: 1px solid black;
+                            border-bottom: 1px solid $black;
                             padding-bottom: 5px; 
                             margin-bottom: 25px; 
                         }

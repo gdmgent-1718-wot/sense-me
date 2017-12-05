@@ -22,4 +22,3 @@ module.exports = function(app) {
     .put(users.update_a_user)
     .delete(users.delete_a_user);
 };
-
