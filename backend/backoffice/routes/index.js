@@ -37,9 +37,9 @@ module.exports = function(app) {
    * Events
    */
   app.route('/backoffice/events')
-  .post(events.create_a_event)
-  .get(events.get_index);
-
-
+    .post(events.create_a_event)
+    .get(events.get_index);
+  app.route('/backoffice/events/:eventId/delete')
+    .post(events.delete_a_event);
 };
 

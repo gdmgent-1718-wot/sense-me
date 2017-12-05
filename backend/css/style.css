@@ -114,8 +114,7 @@ body {
     padding: 0 35px;
     height: 50px;
     background: #1C1C1B;
-    text-align: right;
-    /*box-shadow: 0px 3px 2px $shadow;*/ }
+    text-align: right; }
     body .header img {
       height: 30px;
       margin: 0 0 0 20px; }
@@ -193,7 +192,7 @@ body {
         width: 50%;
         font-size: 20px;
         text-transform: uppercase;
-        background: #ff4c34;
+        background: #FFA734;
         padding: 7px;
         margin: 1px;
         color: white;
@@ -342,6 +341,48 @@ body {
             padding: 3px 10px; }
             body .container .content .events table tbody tr td.date, body .container .content .events table tbody tr td.start, body .container .content .events table tbody tr td.end {
               text-align: center; }
+      body .container .content .events #alert, body .container .content .events #create {
+        -webkit-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        position: absolute;
+        top: 44px;
+        bottom: 0;
+        left: 100px;
+        right: 0;
+        background: rgba(23, 23, 23, 0.7); }
+        body .container .content .events #alert.visible, body .container .content .events #create.visible {
+          display: block; }
+        body .container .content .events #alert.hide, body .container .content .events #create.hide {
+          display: none; }
+        body .container .content .events #alert .box, body .container .content .events #create .box {
+          -webkit-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+          box-sizing: border-box;
+          background: #fff;
+          width: 25%;
+          margin: 10% 35%;
+          padding: 20px 100px;
+          text-align: center; }
+          body .container .content .events #alert .box form label, body .container .content .events #create .box form label {
+            font-family: Arial, "Helvetica";
+            font-size: 13px;
+            font-weight: 800; }
+          body .container .content .events #alert .box form button, body .container .content .events #create .box form button {
+            opacity: 0.8;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            background: #ff4c34; }
+          body .container .content .events #alert .box button, body .container .content .events #create .box button {
+            opacity: 0.8;
+            border: none;
+            border-radius: 50px;
+            background: #FFA734;
+            font-size: 13px;
+            padding: 10px 20px; }
+            body .container .content .events #alert .box button:hover, body .container .content .events #create .box button:hover {
+              opacity: 1; }
     body .container .content .dashboard {
       width: 100%; }
       body .container .content .dashboard .dashboard-events {

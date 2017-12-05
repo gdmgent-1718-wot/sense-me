@@ -21,3 +21,13 @@ exports.create_a_event = function(req, res) {
   });
 };
 
+
+exports.delete_a_event = (req, res) => {
+  Events.remove({
+    _id: req.params.eventId
+  }, (err, user) => {
+    if (err)
+      res.send(err);
+    res.redirect('/backoffice/events');
+  })
+};
