@@ -17,7 +17,7 @@ exports.create_a_event = function(req, res) {
   new_event.save(function(err, event) {
     if (err)
       res.send(err);
-    res.json(event);
+      res.redirect('/backoffice/events');
   });
 };
 

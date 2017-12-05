@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .events
-    button.btn Voeg evenement toe
+    button.btn#add Voeg evenement toe
     table
       thead
         tr
@@ -33,7 +33,33 @@ block content
           form(method='post' action="" class="form")
             button.btn(type='submit' onclick="hide('alert')") verwijderen
           button.btn(onclick="hide('alert')") Annuleer
-
+    
+    #create.hide
+      button.btn-close(onclick="hide('type')") 
+        i.fa.fa-close
+      .box
+        p Maak een nieuw evenement aan.
+          form(method='post' action=`/backoffice/events`)
+            .flex.column.start.form-item
+              label datum
+              input(type="date" placeholder="datum" name="date" value="")
+            .flex.column.start.form-item
+              label Naam
+              input(type="text" placeholder="Geef een naam aan je evenement" name="name" value="")
+            .flex.column.start.form-item
+              label Beschrijving
+              textarea(cols="30", rows="10" placeholder="Korte inhoud over je evenement" name="description" value="")
+            .flex.column.start.form-item
+              label Locatie
+              input(type="text" placeholder="Waar vind je evenement plaats" name="location" value="")
+            .flex.column.start.form-item
+              label Start tijd
+              input(type="time" name="start" value="")
+            .flex.column.start.form-item
+              label Eind tijd
+              input(type="time" name="stop" value="")
+            button.btn(type='submit' onclick="hide('type')") Toevoegen
+        
   script.
     var events = document.querySelector('.eventBody');
     events.addEventListener('click', function(e) {
@@ -42,7 +68,7 @@ block content
         remove(id);
       }
     });
-
+  
     var remove = function(id){
       var alert = document.querySelector('#alert');
         alert.classList.remove('hide');
@@ -64,3 +90,10 @@ block content
               create.classList.add('hide');
         }
     }
+
+    var add = document.querySelector('#add');
+    add.addEventListener('click', function(e) {
+      var alert = document.querySelector('#create');
+          alert.classList.add('visible');
+          alert.classList.remove('hide');
+    });

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
  * COLORS
 
@@ -285,21 +284,63 @@ body {
             border-radius: 50px;
             background: #FFA734;
             padding: 10px 20px; }
-      body .container .content .users #create .box {
-        margin: 4% 30%;
-        height: 70%; }
-        body .container .content .users #create .box form .form-item  {
-          margin: 15px 0; }
-        body .container .content .users #create .box form button {
-          width: 100%; }
       body .container .content .users #create .btn-close {
-        position: absolute;
-        font-size: 20px;
-        background: none;
         border: none;
-        color: #FFA734;
-        margin: 5% 0 0 57%;
-        cursor: pointer; }
+        background: 0 0;
+        position: absolute;
+        margin: 2% 0 0 72%; }
+        body .container .content .users #create .btn-close i {
+          color: #FFA734;
+          font-size: 18px; }
+      body .container .content .users #create .box {
+        -webkit-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        background: #fff;
+        width: 50%;
+        margin: 1% 25%;
+        padding: 20px 100px;
+        text-align: center; }
+        body .container .content .users #create .box p {
+          text-transform: uppercase;
+          border-bottom: 1px solid black;
+          padding-bottom: 5px;
+          margin-bottom: 25px; }
+        body .container .content .users #create .box form .form-item {
+          margin: 10px 0; }
+          body .container .content .users #create .box form .form-item label {
+            font-family: Arial, "Helvetica";
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            text-transform: uppercase; }
+          body .container .content .users #create .box form .form-item input {
+            font-family: Arial, "Helvetica";
+            border-radius: 30px;
+            border: 1px solid #d1d1d1;
+            -webkit-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 5px 10px;
+            width: 100%;
+            font-size: 12px; }
+          body .container .content .users #create .box form .form-item textarea {
+            font-size: 12px;
+            font-family: Arial, "Helvetica";
+            border: 1px solid #d1d1d1;
+            -webkit-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 5px 10px;
+            width: 100%; }
+        body .container .content .users #create .box form button {
+          opacity: 0.8;
+          border: none;
+          border-radius: 50px;
+          padding: 10px 20px;
+          background: #FFA734;
+          width: 100%; }
     body .container .content .events {
       -webkit-box-sizing: border-box;
       -ms-box-sizing: border-box;
@@ -342,11 +383,13 @@ body {
             body .container .content .events table tbody tr td.date, body .container .content .events table tbody tr td.start, body .container .content .events table tbody tr td.end {
               text-align: center; }
       body .container .content .events #alert, body .container .content .events #create {
+        overflow: hidden;
+        min-height: calc(100vh - 45px);
         -webkit-box-sizing: border-box;
         -ms-box-sizing: border-box;
         box-sizing: border-box;
         position: absolute;
-        top: 44px;
+        top: 50px;
         bottom: 0;
         left: 100px;
         right: 0;
@@ -355,34 +398,63 @@ body {
           display: block; }
         body .container .content .events #alert.hide, body .container .content .events #create.hide {
           display: none; }
+        body .container .content .events #alert .btn-close, body .container .content .events #create .btn-close {
+          border: none;
+          background: 0 0;
+          position: absolute;
+          margin: 2% 0 0 72%; }
+          body .container .content .events #alert .btn-close i, body .container .content .events #create .btn-close i {
+            color: #FFA734;
+            font-size: 18px; }
         body .container .content .events #alert .box, body .container .content .events #create .box {
           -webkit-box-sizing: border-box;
           -ms-box-sizing: border-box;
           box-sizing: border-box;
           background: #fff;
-          width: 25%;
-          margin: 10% 35%;
+          width: 50%;
+          margin: 1% 25%;
           padding: 20px 100px;
           text-align: center; }
-          body .container .content .events #alert .box form label, body .container .content .events #create .box form label {
-            font-family: Arial, "Helvetica";
-            font-size: 13px;
-            font-weight: 800; }
+          body .container .content .events #alert .box p, body .container .content .events #create .box p {
+            text-transform: uppercase;
+            border-bottom: 1px solid black;
+            padding-bottom: 5px;
+            margin-bottom: 25px; }
+          body .container .content .events #alert .box form .form-item, body .container .content .events #create .box form .form-item {
+            margin: 10px 0; }
+            body .container .content .events #alert .box form .form-item label, body .container .content .events #create .box form .form-item label {
+              font-family: Arial, "Helvetica";
+              font-size: 10px;
+              font-weight: 800;
+              margin-bottom: 5px;
+              margin-left: 5px;
+              text-transform: uppercase; }
+            body .container .content .events #alert .box form .form-item input, body .container .content .events #create .box form .form-item input {
+              font-family: Arial, "Helvetica";
+              border-radius: 30px;
+              border: 1px solid #d1d1d1;
+              -webkit-box-sizing: border-box;
+              -ms-box-sizing: border-box;
+              box-sizing: border-box;
+              padding: 5px 10px;
+              width: 100%;
+              font-size: 12px; }
+            body .container .content .events #alert .box form .form-item textarea, body .container .content .events #create .box form .form-item textarea {
+              font-size: 12px;
+              font-family: Arial, "Helvetica";
+              border: 1px solid #d1d1d1;
+              -webkit-box-sizing: border-box;
+              -ms-box-sizing: border-box;
+              box-sizing: border-box;
+              padding: 5px 10px;
+              width: 100%; }
           body .container .content .events #alert .box form button, body .container .content .events #create .box form button {
             opacity: 0.8;
             border: none;
             border-radius: 50px;
             padding: 10px 20px;
-            background: #ff4c34; }
-          body .container .content .events #alert .box button, body .container .content .events #create .box button {
-            opacity: 0.8;
-            border: none;
-            border-radius: 50px;
             background: #FFA734;
-            font-size: 13px;
-            padding: 10px 20px; }
-            body .container .content .events #alert .box button:hover, body .container .content .events #create .box button:hover {
-              opacity: 1; }
+            width: 100%; }
     body .container .content .dashboard {
       width: 100%; }
       body .container .content .dashboard .dashboard-events {
