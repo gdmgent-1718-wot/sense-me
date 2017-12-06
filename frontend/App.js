@@ -1,16 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
+import { 
   Platform,
-  StyleSheet,
-  Text,
-  View
+  View,
+  Image,
+  StyleSheet
 } from 'react-native';
+
+import Tabs from './app/config/router';
+import Sense from './app/screens/sense';
+
+const logo = require('./assets/logo_reverse.png')
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,36 +21,27 @@ const instructions = Platform.select({
 export default class App extends Component<{}> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View style={{flex: 1}}>
+        <View style={style.header}>
+          <Image source={logo} style={style.logo} />
+        </View>
+        <View style={{flex: 7}}> 
+          <Tabs />
+        </View>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
+const style = StyleSheet.create ({
+  header: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#2B98D4',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  logo : {
+    width: 40,
+    height: 40,
+  }
 });
