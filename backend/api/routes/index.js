@@ -2,6 +2,7 @@
 module.exports = function(app) {
   var roles = require('../controllers/roleController');
   var users = require('../controllers/userController');
+  var events = require('../controllers/eventController');
   // Routes
   app.route('/api/roles')
     .get(roles.list_all_roles)
@@ -17,8 +18,6 @@ module.exports = function(app) {
     .post(users.populate);
    // .post(users.create_a_user);
 
-  app.route('/api/users/:userId')
-    .get(users.read_a_user)
-    .put(users.update_a_user)
-    .delete(users.delete_a_user);
+  app.route('/api/events')
+    .get(events.list_all_events);
 };

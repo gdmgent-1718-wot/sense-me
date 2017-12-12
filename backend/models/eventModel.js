@@ -19,6 +19,9 @@ var EventSchema = new Schema({
     type: String,
     required: 'Kindly enter a start time',
   },
+  src: {
+    type: String,
+  },
   stop: {
     type: String,
   },

@@ -39,13 +39,16 @@ block content
         i.fa.fa-close
       .box
         p Maak een nieuw evenement aan.
-        form(method='post' action=`/backoffice/events`)
+        form(method='post'  enctype="multipart/form-data" action=`/backoffice/events`)
           .flex.column.start.form-item
             label datum
             input(type="date" placeholder="datum" name="date" value="")
           .flex.column.start.form-item
             label Naam
             input(type="text" placeholder="Geef een naam aan je evenement" name="name" value="")
+          .flex.column.start.form-item
+            label Banner
+            input(type="file" name="file")
           .flex.column.start.form-item
             label Beschrijving
             textarea(cols="30", rows="10" placeholder="Korte inhoud over je evenement" name="description" value="")

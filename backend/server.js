@@ -11,15 +11,19 @@ var express = require('express'),
     User = require('./models/userModel')
     Events = require('./models/eventModel')
     ; //created model loading here
-  
+const fileUpload = require('express-fileupload');
+
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/Tododb'); 
+mongoose.connect('mongodb://localhost:27017/SenseMe'); 
 
 app.locals.moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(fileUpload());
 
+
+app.use("/uploads",express.static(__dirname + "/uploads"));
 app.use("/css",express.static(__dirname + "/css"));
 app.set('views', path.join(__dirname, '/backoffice/views'));
 app.set('view engine', 'pug');
