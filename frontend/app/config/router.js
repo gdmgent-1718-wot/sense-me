@@ -1,10 +1,11 @@
 import React from 'react';
-import  { TabNavigator } from 'react-navigation';
+import  { TabNavigator,StackNavigator } from 'react-navigation';
 
 import Sense from '../screens/sense';
 import Docenten from '../screens/docenten';
 import Events from '../screens/events';
 import Profiel from '../screens/profiel';
+import Andere from '../screens/Andere';
 
 const Tabs = TabNavigator ({
     Sense: {
