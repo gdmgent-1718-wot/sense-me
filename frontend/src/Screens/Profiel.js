@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet
-} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
-class Docenten extends Component {
+class Profiel extends Component {
   render() {
     return (
       <View style={style.container}>
-          <Text style={style.statusText}>Docenten</Text>
+          <Text style={style.statusText}>Profiel</Text>
       </View>
     );
   }
@@ -31,4 +27,4 @@ const style = StyleSheet.create ({
 	}
 })
 
-export default Docenten;
+export default Profiel;

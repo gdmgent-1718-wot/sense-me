@@ -3,18 +3,23 @@ import {
   Text,
   View,
   ScrollView,
-  StyleSheet
+  StyleSheet, Button
 } from 'react-native';
 
-class Profiel extends Component {
-  render() {
-    return (
-      <View style={style.container}>
-          <Text style={style.statusText}>Profiel</Text>
-      </View>
-    );
-  }
-}
+import ServiceAction from '../Actions/CallAllEvents';
+import { Actions } from 'react-native-router-flux'; // New code
+
+const Events = ({ navigation }) => (
+
+	<View style={style.container}>
+	<Text
+		onPress={() => Actions.event()} // New Code
+	>
+GO TO EVENT TEMPORARY
+</Text>
+	<ServiceAction />
+  </View>
+)
 
 const style = StyleSheet.create ({
     container: {
@@ -32,4 +37,4 @@ const style = StyleSheet.create ({
 	}
 })
 
-export default Profiel;
+export default Events;

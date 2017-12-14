@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  StyleSheet
-} from 'react-native';
-
-class Events extends Component {
+import { Text, View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+class EventDetail extends Component {
+	constructor(props) {
+		super(props);
+}
   render() {
     return (
       <View style={style.container}>
-          <Text style={style.statusText}>Events</Text>
+        <Text>{this.props.id}</Text>
       </View>
     );
   }
 }
-
+EventDetail.PropTypes = {
+    id: PropTypes.string.isRequired
+}
 const style = StyleSheet.create ({
     container: {
 		flex: 1,
@@ -32,4 +32,4 @@ const style = StyleSheet.create ({
 	}
 })
 
-export default Events;
+export default EventDetail;

@@ -1,19 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  NativeAppEventEmitter,
-  NativeEventEmitter,
-  NativeModules,
-  Platform,
-  PermissionsAndroid,
-  ListView,
-  ScrollView,
-  AppState
-} from 'react-native';
-
+import { StyleSheet, Text, View, TouchableHighlight, NativeAppEventEmitter, NativeEventEmitter, NativeModules, Platform, PermissionsAndroid, ListView, ScrollView, AppState } from 'react-native';
 import BleManager from 'react-native-ble-manager';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
