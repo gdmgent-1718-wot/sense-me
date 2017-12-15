@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, NativeAppEventEmitter, NativeEventEmitter, NativeModules, Platform, PermissionsAndroid, ListView, ScrollView, AppState } from 'react-native';
 import BleManager from 'react-native-ble-manager';
+import Button from '../Components/Button/index';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 const BleManagerModule = NativeModules.BleManager;
@@ -149,11 +150,8 @@ class Sense extends Component {
 
     return (
       <View>
-        <Text style={style.statusText}>Sense</Text>
 
-        <TouchableHighlight style={style.button} onPress={() => this.startScan() }>
-          <Text style={style.buttonText}>Sense andere</Text>
-        </TouchableHighlight>
+        <Button onPress={() => this.startScan() }> Sense andere </Button>
 
         <ScrollView>
         {(list.length == 0) &&
@@ -197,17 +195,6 @@ const style = StyleSheet.create ({
 		flex: 1,
 		justifyContent: 'center',
     alignItems: 'center',
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#FFA734',
-    padding: 10,
-    marginTop: 20,
-    width: 300,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: 'white',
   },
 	statusText: {
 		fontSize: 40,

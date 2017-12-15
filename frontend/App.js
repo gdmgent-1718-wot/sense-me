@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from './src/Reducers/index';
 // HEADER AND TAPBAR
 import Header from './src/Components/Header/index';
-import Stack from './src/Config/Router';
+import Stack from './src/config/router';
+
 export default class App extends Component<{}> {
   render() {
     return (
