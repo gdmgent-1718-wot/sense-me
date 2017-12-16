@@ -1,3 +1,10 @@
 export const SERVICE_PENDING = 'service_pending'
 export const SERVICE_ERROR = 'service_error'
 export const SERVICE_SUCCESS = 'service_success'
+export const SERVICE_RESET = 'service_reset'
+
+export const SELECT_EVENT = 'SELECT_EVENT'
+export const REQUEST_EVENT = 'REQUEST_EVENT'
+export const REQUEST_EVENTS = 'REQUEST_EVENTS'
+export const RECEIVE_EVENT = 'RECEIVE_EVENT'
+export const RECEIVE_EVENTS = 'RECEIVE_EVENTS'

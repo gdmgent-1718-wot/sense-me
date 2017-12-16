@@ -7,19 +7,17 @@ import {
 } from 'react-native';
 
 import ServiceAction from '../Actions/CallAllEvents';
-import { Actions } from 'react-native-router-flux'; // New code
+import { Actions } from 'react-native-router-flux';
+import PropType from 'prop-types';
+import { connect } from 'react-redux';
 
-const Events = ({ navigation }) => (
-
-	<View style={style.container}>
-	<Text
-		onPress={() => Actions.event()} // New Code
-	>
-GO TO EVENT TEMPORARY
-</Text>
-	<ServiceAction />
-  </View>
-)
+export default  Events = () => {
+  return (
+		<View style={style.container}>
+		<ServiceAction />
+    </View>
+  )
+}
 
 const style = StyleSheet.create ({
     container: {
@@ -36,5 +34,3 @@ const style = StyleSheet.create ({
 		backgroundColor: 'rgba(0,0,0,0)',
 	}
 })
-
-export default Events;

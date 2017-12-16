@@ -16,8 +16,10 @@ module.exports = function(app) {
   app.route('/api/users')
     .get(users.list_all_users)
     .post(users.populate);
-   // .post(users.create_a_user);
 
   app.route('/api/events')
     .get(events.list_all_events);
+
+  app.route('/api/events/:eventId')
+    .get(events.get_a_event)
 };

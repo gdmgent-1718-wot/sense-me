@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
-import {  Platform, View } from 'react-native';
-// API IMPORTS
-import { Provider } from 'react-redux';
+import React from 'react';
+import {createStore} from 'redux';
+import {Provider, connect} from 'react-redux';
+import {Scene, Actions, Router} from 'react-native-router-flux';
+import { navigator } from './src/Config/Router';
 import store from './src/Reducers/index';
-// HEADER AND TAPBAR
 import Header from './src/Components/Header/index';
-import Stack from './src/config/router';
+import { View } from 'react-native'
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <Provider store={store}>
-      <View style={{flex: 1}}>
-        <Header/>
-        <Stack/>
-      </View>
-      </Provider>
-    );
-  }
+
+const ReduxRouter = connect()(Router);
+// it is important to load reducers AFTER actions.create (so no import here)
+const AppReducers = require('./src/Reducers/index').default;
+
+export default
+class App extends React.Component {
+    render() {
+        console.log(this.state)
+        return (
+            <Provider store={store}>
+            <View style={{flex: 1}}>
+                <Header />
+                <ReduxRouter navigator={navigator} />
+                </View>
+            </Provider>
+        );
+    }
 }
-
-
-

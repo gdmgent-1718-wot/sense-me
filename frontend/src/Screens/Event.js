@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet, Button } from 'react-native';
-// SERVICE ACTION IS CALL API
-import ServiceAction from '../Actions/CallAllEvents';
-import { Actions } from 'react-native-router-flux'; // New code
+import * as ActionTypes from '../Actions/ActionTypes'
 
-const Events = ({props}) => (
-	<View style={style.container}>
-	<Text
-		onPress={() => Actions.event()} // New Code
-	>
-	Scarlet Screen
-</Text>
-	<ServiceAction />
-  </View>
-)
-const style = StyleSheet.create ({
+import { Actions } from 'react-native-router-flux'; 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import  store from './../Reducers/index';
+class Event extends Component {
+	constructor(props) {
+		super(props);
+			this.state = {
+					event: store.getState().event.event,
+					selected: store.getState().event.selected
+			}
+	}
+	render() {
+			return (
+			<View>
+			<Text>{this.state.event.event.name}</Text>
+			</View>
+			);
+		}
+  }
+  
+
+const styles = StyleSheet.create ({
     container: {
 		flex: 1,
 		justifyContent: 'center',
@@ -30,4 +40,4 @@ const style = StyleSheet.create ({
 	}
 })
 
-export default Events;
+export default connect(({routes}) => ({routes}))(Event)

@@ -27,7 +27,7 @@ exports.get_a_event = function(req, res){
     res.render('events/update', {'title': 'evenementen', item: event, event: true})
   })
 }
-console.log('TIME' , new Date().getTime());
+
 exports.create_a_event = function(req, res) {
   let testFile = req.files.file;
   let ex = testFile.name.split('.').pop();

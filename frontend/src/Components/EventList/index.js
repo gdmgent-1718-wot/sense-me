@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, Image, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 import 'moment/locale/nl-be';
+import { Actions } from 'react-native-router-flux'; 
+import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import Event from './../../Screens/Event';
-import Events from './../../Screens/Events';
-export default class EventList extends Component {
+export class EventList extends Component {
 
     constructor(props) {
         super(props);
         moment.locale('nl-be');
-
         this.state = {
             dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2,
@@ -20,21 +19,26 @@ export default class EventList extends Component {
     }
 
     componentDidMount() {
-        this.props.callService()
+        this.props.callService();
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.data != null) {
-            console.log('the state', nextProps)
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(nextProps.data)
             });
         }
     }
     renderCell = (event) => (
-        <TouchableOpacity style={styles.containerList}>
+        <TouchableOpacity 
+            style={styles.containerList}
+            onPress={() => {
+                this.props.select(event._id)
+                this.props.fetch(event._id)
+            }}>
             <Image source={{ uri: event.src }} style={styles.photo}/>
             <View style={styles.info}>
+            
                 <Text style={styles.title}>{event.name}</Text>
                 <Text>{moment(event.date).format('DD.MM.\'YY')}   {event.start}-{event.stop}</Text>
             </View>
@@ -43,7 +47,6 @@ export default class EventList extends Component {
 
     render() {
         const { dataSource, isLoading } = this.state;
-
         return (
             <View style={styles.container}>
                 <ListView
@@ -55,7 +58,7 @@ export default class EventList extends Component {
         );
     }
 }
-
+export default connect(({routes}) => ({routes}))(EventList)
   
 const styles = StyleSheet.create({
     container: {
