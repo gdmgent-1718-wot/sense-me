@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
 import ReactNativeRouter, { Actions, Router, Scene, Reducer } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-
+import Colors from './Theme';
 import Sense from '../Screens/Sense';
 import Docenten from '../Screens/Docenten';
 import Events from '../Screens/Events';
 import Event from '../Screens/Event';
 import Profiel from '../Screens/Profiel';
+const reducerCreate = params => {
+  const defaultReducer = new Reducer(params);
+  return (state, action) => {
+    console.log('ACTION:', action);
+    return defaultReducer(state, action);
+  };
+};
 
-export const navigator = Actions.create(
+const navigator = () => (
+  <Router
+  createReducer={reducerCreate}
+  >
   <Scene key="root"
-tabBarPosition={'bottom'}>
-{/*TAB CONTAINER*/}
+      tabBarPosition='bottom'>
   <Scene 
     key="tabbar"
     tabs={true}
     hideNavBar={true}
     swipeEnabled={false}
-    activeBackgroundColor={'#FFA734'}
-    activeTintColor={'#2B98D4'}
-    labelStyle={{flex: 1, alignSelf: 'center', fontSize: 12, marginBottom: 15, color: '#FFF'}}
-    tabBarStyle={{  backgroundColor: '#2B98D4' }}>
+    activeBackgroundColor={Colors.orange}
+    activeTintColor={Colors.darkgrey}
+    labelStyle={{flex: 1, alignSelf: 'center', fontSize: 12, marginBottom: 15, color: Colors.white}}
+    tabBarStyle={{  backgroundColor: Colors.mediumBlue }}>
 
     {/* Tab and it's scenes */}
       <Scene
@@ -50,4 +59,7 @@ tabBarPosition={'bottom'}>
         component={Profiel}
       />
   </Scene>
-</Scene>);
+  </Scene>
+  </Router>
+);
+export default navigator;

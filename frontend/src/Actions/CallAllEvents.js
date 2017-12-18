@@ -20,6 +20,8 @@ export const callWebservice = () => {
     return dispatch => {
         dispatch(serviceActionPending()) 
         axios.get('http://192.168.1.155:3000/api/events')
+        //BIB http://192.168.20.51:
+        //axios.get('http://192.168.20.51:3000/api/events')
         .then(response => {
             dispatch(serviceActionSuccess(response.data))
         })
@@ -67,10 +69,9 @@ export function fetchEventDetail(event) {
       dispatch(requestEvent(event))
       return axios.get(`http://192.168.1.155:3000/api/events/${event}`)
         .then(
-          response => dispatch(receiveEvent(response.data)),
-          error => console.log('An error occurred.', error)
+            response => { dispatch(receiveEvent(response.data)), Actions.event(response.data) },
+            error => console.log('An error occurred.', error)
         )
-        .then(Actions.event())
     }
   }
 

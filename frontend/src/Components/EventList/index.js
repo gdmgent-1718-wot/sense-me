@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ListView, Image, TouchableOpacity } from 'react-native';
+import { Text, View, ListView, Image, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 import 'moment/locale/nl-be';
 import { Actions } from 'react-native-router-flux'; 
 import { connect } from 'react-redux';
-
+import styles from './style';
 import PropTypes from 'prop-types';
 export class EventList extends Component {
 
@@ -19,6 +19,7 @@ export class EventList extends Component {
     }
 
     componentDidMount() {
+        console.log('EVENTS LIST MOUNT!',this.props);
         this.props.callService();
     }
 
@@ -60,30 +61,3 @@ export class EventList extends Component {
 }
 export default connect(({routes}) => ({routes}))(EventList)
   
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignSelf: 'stretch'
-    },
-    containerList: {
-        padding: 3,
-    },
-    photo: {
-        minHeight: 150,
-        alignSelf: 'stretch',
-        backgroundColor: '#000000'
-    },
-    info: {
-        padding: 15,
-        height: 75,
-        backgroundColor: '#efefef',
-        borderBottomWidth: 1,
-        borderColor: '#000', 
-        justifyContent: 'center'
-    }, 
-    title: {
-        fontWeight: '800',
-        fontSize: 18, 
-    }
-
-});

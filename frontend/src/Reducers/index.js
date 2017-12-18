@@ -4,10 +4,8 @@ import createLogger from 'redux-logger';
 
 import serviceReducer from './serviceReducer';
 import eventReducer from './eventReducer';
-import routeReducer from './routes';
 
 const AppReducers = combineReducers({
-   router: routeReducer,
    events: serviceReducer,
    event: eventReducer
 

@@ -1,7 +1,7 @@
-import * as Actions from './ActionTypes';
+import * as ActionTypes from './ActionTypes';
 import axios from 'axios';
 import Event from '../Screens/Event';
-
+import { Actions } from 'react-native-navigation-flux';
 import { connect } from 'react-redux';
  
 const mapStateToProps = (state) => ({
@@ -17,34 +17,34 @@ const mapStateToProps = (state) => ({
 
 export function selectEvent(event) {
   return {
-    type: Actions.SELECT_EVENT,
+    type: ActionTypes.SELECT_EVENT,
     event
   }
 }
 
 function requestEvent(event) {
   return {
-    type: Actions.REQUEST_EVENT,
+    type: ActionTypes.REQUEST_EVENT,
   }
 }
 
 function receiveEvent(response) {
   return {
-    type: Actions.RECEIVE_EVENT,
+    type: ActionTypes.RECEIVE_EVENT,
     data: response,
   }
 }
 export function resetState() {
   return {
-    type: Actions.SERVICE_RESET,
+    type: ActionTypes.SERVICE_RESET,
   }
 }
 export function fetchEventDetail(event) {
   return function (dispatch) {
     dispatch(requestEvent(event))
-    return axios.get(`http://192.168.1.155:3000/api/events/${event}`)
+    return axios.get(`http://192.168.20.51:3000/api/events/${event}`)
       .then(
-        response => dispatch(receiveEvent(response.data)),
+        response => { dispatch(receiveEvent(response.data)), Actions.Event(response.data) },
         error => console.log('An error occurred.', error)
       )
   }
