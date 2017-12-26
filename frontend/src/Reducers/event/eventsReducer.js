@@ -1,7 +1,7 @@
-import * as Actions from '../Actions/ActionTypes'
+import * as Actions from '../../Actions/ActionTypes'
 
 
-const serviceReducer = (state = { isLoading: false, error: undefined, data: {} }, action) => {
+const eventsReducer = (state = { isLoading: false, error: undefined, data: {} }, action) => {
     switch (action.type) {
         case Actions.SERVICE_PENDING:
             return Object.assign({}, state, {
@@ -22,4 +22,4 @@ const serviceReducer = (state = { isLoading: false, error: undefined, data: {} }
     }
 }
 
-export default serviceReducer;
+export default eventsReducer;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import EventList from '../Components/EventList/index';
 import { Actions } from 'react-native-router-flux'; 
-
+import { URL } from '../Config/Constants';
 const mapStateToProps = (state) => ({
     isLoading: state.events.isLoading,
     error: state.events.error,
@@ -19,9 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 export const callWebservice = () => {
     return dispatch => {
         dispatch(serviceActionPending()) 
-        axios.get('http://192.168.1.155:3000/api/events')
-        //BIB http://192.168.20.51:
-        //axios.get('http://192.168.20.51:3000/api/events')
+        axios.get( URL + 'events')
         .then(response => {
             dispatch(serviceActionSuccess(response.data))
         })
@@ -58,7 +56,7 @@ export function selectEvent(event) {
     }
   }
   
-  function receiveEvent(response) {
+function receiveEvent(response) {
     return {
       type: ActionTypes.RECEIVE_EVENT,
       data: response,
@@ -67,9 +65,9 @@ export function selectEvent(event) {
 export function fetchEventDetail(event) {
     return function (dispatch) {
       dispatch(requestEvent(event))
-      return axios.get(`http://192.168.1.155:3000/api/events/${event}`)
+      return axios.get(`${URL}events/${event}`)
         .then(
-            response => { dispatch(receiveEvent(response.data)), Actions.event(response.data) },
+            response => { console.log('EVENT', response.data), dispatch(receiveEvent(response.data)), Actions.event(response.data) },
             error => console.log('An error occurred.', error)
         )
     }

@@ -6,7 +6,7 @@ import {
   StyleSheet, Button
 } from 'react-native';
 
-import ServiceAction from '../Actions/CallAllEvents';
+import ServiceAction from '../Actions/EventActions';
 import { Actions } from 'react-native-router-flux';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';

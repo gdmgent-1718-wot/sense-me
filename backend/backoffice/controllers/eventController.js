@@ -42,7 +42,7 @@ exports.create_a_event = function(req, res) {
 
   var new_event = new Events(req.body);
   new_event.src = 'http://192.168.1.155:3000/uploads/' + name;
-  console.log('new event: ', new_event);
+
   new_event.save(function(err, event) {
     console.log(event.src);
     if (err)

@@ -19,7 +19,6 @@ export class EventList extends Component {
     }
 
     componentDidMount() {
-        console.log('EVENTS LIST MOUNT!',this.props);
         this.props.callService();
     }
 

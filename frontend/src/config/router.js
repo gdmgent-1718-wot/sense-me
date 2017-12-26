@@ -7,6 +7,7 @@ import Docenten from '../Screens/Docenten';
 import Events from '../Screens/Events';
 import Event from '../Screens/Event';
 import Profiel from '../Screens/Profiel';
+
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params);
   return (state, action) => {
@@ -30,7 +31,6 @@ const navigator = () => (
     activeTintColor={Colors.darkgrey}
     labelStyle={{flex: 1, alignSelf: 'center', fontSize: 12, marginBottom: 15, color: Colors.white}}
     tabBarStyle={{  backgroundColor: Colors.mediumBlue }}>
-
     {/* Tab and it's scenes */}
       <Scene
         key="sense"

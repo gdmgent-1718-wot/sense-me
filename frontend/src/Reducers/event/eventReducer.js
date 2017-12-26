@@ -1,4 +1,4 @@
-import * as Actions from '../Actions/ActionTypes'
+import * as Actions from '../../Actions/ActionTypes'
 import { combineReducers } from 'redux';
 function selectedEvent(state = 'event', action) {
     switch (action.type) {
@@ -8,7 +8,6 @@ function selectedEvent(state = 'event', action) {
         return state
     }
   }
-  
   function event(
     state = {
       isFetching: false,
