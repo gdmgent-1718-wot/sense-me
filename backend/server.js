@@ -22,8 +22,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());
 
+// Enable request picture from directory
+app.use("/uploads/events",express.static(__dirname + "/uploads/events"));
+app.use("/uploads/teacher",express.static(__dirname + "/uploads/teacher"));
+app.use("/uploads/student",express.static(__dirname + "/uploads/student"));
 
-app.use("/uploads",express.static(__dirname + "/uploads"));
 app.use("/css",express.static(__dirname + "/css"));
 app.set('views', path.join(__dirname, '/backoffice/views'));
 app.set('view engine', 'pug');
