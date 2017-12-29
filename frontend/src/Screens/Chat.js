@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import TeacherList from '../Actions/Teachers/TeacherActions';
 
-class Docenten extends Component {
+
+class Chat extends Component {
   render() {
     return (
       <View style={style.container}>
-      	<TeacherList />
+
       </View>
     );
   }
@@ -15,6 +15,8 @@ class Docenten extends Component {
 const style = StyleSheet.create ({
     container: {
 		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	statusText: {
 		fontSize: 40,
@@ -26,4 +28,4 @@ const style = StyleSheet.create ({
 	}
 })
 
-export default Docenten;
+export default Chat;

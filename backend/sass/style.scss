@@ -2,6 +2,7 @@
 @import 'base';
 @import '_helpers';
 @import '_mixin';
+@import '_animations';
 
 h1, h2, h3, h4, h5, h6, p, span, a {
     font-family: $font-family;
@@ -16,6 +17,36 @@ h1 {
 p, span, a {
     font-weight: $regular;
 }
+.btn-close {
+    @include box-sizing;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    padding: 7px 10px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    z-index: 1;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    background: black;
+    @include transition(background-color, 0.6s, ease-in-out);
+                @include transition(color, 0.1s, ease-in-out);
+    &:hover {
+        background: white;
+        color: black;
+        border-radius: 100%;
+        padding: 7px 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+        animation: rotateHover 1.5s ease-in-out;
+        cursor: pointer;
+        @include transition(background-color, 1s, ease-in-out);
+        @include transition(color, 1s, ease-in-out);
+    }
+}
 
 body{
     margin: 0;
@@ -25,6 +56,7 @@ body{
         padding: 0 35px;
         height: 50px;
         background: $black;
+        border-bottom: 1px solid white;
         text-align: right;
         img {
             height: 30px;
@@ -38,9 +70,8 @@ body{
     }
     .container {
         .navigation {
-           /* box-shadow: 2px 3px 2px $shadow;*/
             background: $light-blue;
-            height: calc(100vh - 40px);
+            height: calc(100vh - 50px);
             width: 100px;
             a {
                 color: $white;
@@ -48,8 +79,7 @@ body{
                 @include box-sizing(); 
                 width: 100px;
                 height: 100px;
-                background: $black;
-                border-bottom: 1px solid #fff;
+                background: $dark-blue;
                 text-align: center;
                 padding: 34px;
                 cursor: pointer;
@@ -71,11 +101,13 @@ body{
                     align-self: auto;
                 }
                 &.active{
-                    background: $dark-blue;
+                   background: $white;
+                   i {
+                        color: $dark-blue
+                   }
                 }
             }
             .padded {
-                border-bottom: 1px solid #fff;
                 -webkit-order: 0;
                 -ms-flex-order: 0;
                 order: 0;
@@ -85,7 +117,7 @@ body{
                 -webkit-align-self: auto;
                 -ms-flex-item-align: auto;
                 align-self: auto;
-                background: $black;
+                background: $dark-blue;
             }
         }
         .content{
@@ -94,28 +126,32 @@ body{
                 @include box-sizing;
                 padding: 30px;
                 width: 100%;
-                .btn {
-                    border: none;
-                    border-radius: 50px;
-                    background: $dark-blue;
-                    padding: 10px 20px;
-                    color: $white;
-                    margin: 20px 10px 20px 0;
-                    &:hover {
-                        background: $light-blue;
-                    }
-                }
                 .flex h1 {
-                    font-weight: 800;
+                    font-weight: 400;
                     text-align: center;
                     width: 50%;
-                    font-size: 20px;
+                    font-size: 14px;
                     text-transform: uppercase;
-                    background: $orange;
-                    padding: 7px;
+                    background-color: $orange;
+                    padding: 10px;
                     margin: 1px;
                     color: white;
                     box-shadow: 2px 1px 3px $shadow;
+                }
+                .flex p {
+                    border-radius: 7px;
+                    text-align: center;
+                    align-self: flex-end;
+                    margin: 4px;
+                    margin-left: 0;
+                    padding: 7px 15px;
+                    background: $dark-blue;
+                    font-size: 11px;
+                    color: white;
+                    &:hover{
+                      background: $light-blue;
+                        cursor: pointer;
+                    }
                 }
                 table {
                     width: 100%;
@@ -148,7 +184,6 @@ body{
                                             margin: 0 10px;
                                         }
                                     }
-                                    
                                 }
                                 .active {
                                     background: rgb(24, 237, 71);
@@ -180,166 +215,84 @@ body{
                     -ms-flex-item-align: auto;
                     align-self: auto;
                 }
-                #alert, #create {
-                    @include box-sizing;
-                    position: absolute;
-                    top: 44px;
-                    bottom: 0;
-                    left: 100px;
-                    right: 0;
-                    background: rgba(23, 23, 23, 0.7);
-                    &.visible {
-                        display: block;
-                    }
-                    &.hide {
-                        display: none;
-                    }
-                    .box {
-                        @include box-sizing;
-                        background: #fff;
-                        width: 30%;
-                        margin: 10% 35%;
-                        padding: 50px;
-                        text-align: center;
-                        form {
-                            label {
-                                font-family: $font-family;
-                                font-size: 13px;
-                                font-weight: $bold;
-                            }
-                            button {
-                                border: none;
-                                border-radius: 50px;
-                                background: $orange;
-                                padding: 10px 20px;
-                            }
-                        }
-                        button {
-                            border: none;
-                            border-radius: 50px;
-                            background: $orange;
-                            padding: 10px 20px;
-                        }
-                    }
-                }
-                #create {
-                    .btn-close {
-                        border: none;
-                        background: 0 0;
-                        position: absolute;
-                        margin: 2% 0 0 72%;
-                        i {
-                            color: $orange;
-                            font-size: 18px;
-                        }
-                    }
-                    .box {
-                        @include box-sizing;
-                        background: #fff;
-                        width: 50%;
-                        margin: 1% 25%;
-                        padding: 20px 100px;
-                        text-align: center;
-                        p {
-                            text-transform: uppercase;
-                            border-bottom: 1px solid black;
-                            padding-bottom: 5px; 
-                            margin-bottom: 25px; 
-                        }
-                        form {
-                            .form-item{
-                                margin: 10px 0;
-                                label {
-                                    font-family: $font-family;
-                                    font-size: 10px;
-                                    font-weight: $bold;
-                                    margin-bottom: 5px;
-                                    margin-left: 5px;
-                                    text-transform: uppercase;
-                                }
-                                input {
-                                    font-family: $font-family;
-                                    border-radius: 30px;
-                                    border: 1px solid $shadow;
-                                    @include box-sizing;
-                                    padding: 5px 10px;
-                                    width: 100%;
-                                    font-size: 12px;
-                                }
-                                textarea {
-                                    font-size: 12px;
-                                    font-family: $font-family;
-                                    border: 1px solid $shadow;
-                                    @include box-sizing;
-                                    padding: 5px 10px;
-                                    width: 100%;
-                                }
-                            }
-                            button {
-                                opacity: 0.8;
-                                border: none;
-                                border-radius: 50px;
-                                padding: 10px 20px;
-                                background: $orange;
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
+                
             } 
             .events-update {
-                padding: 50px 90px;
                 @include box-sizing;
-                a {
-                    @include box-sizing;
-                    font-size: 23px;
-                    padding: 14px;
-                    color: $white;
-                    text-decoration: none;
-                    background: $dark-blue;
-                    border-radius: 50px;
-                    width: 50px;
-                    height: 50px;
-                    &:hover {
-                        background: $light-blue;
+                .btn-close {
+                    top: 70px;
+                    padding: 7px 10px;
+                }
+                .banner {
+                    width: 100%;
+                    height: 200px;
+                    overflow: hidden;
+                    position: relative;
+                    img {
+                        width: 100%;
+                    }
+
+                      h1 {
+                        position: absolute;
+                        top: calc(200px / 1.5);
+                        color: #fff;
+                        text-align: center;
+                        left: 0;
+                        right: 0;
+                        background: rgba(25,25,25,.8);
+                        padding: 20px;
+                        text-transform: uppercase;
+                        bottom: 0;
+                        margin: 0;
                     }
                 }
                 form {
+                    padding: 35px 90px;
                     .form-item{
-                        margin: 10px 0;
+                        margin: 15px 0;
                         label {
                             font-family: $font-family;
-                            font-size: 10px;
-                            font-weight: $bold;
-                            margin-bottom: 5px;
-                            margin-left: 5px;
-                            text-transform: uppercase;
+                            font-size: 12px;
+                            font-weight: $regular;
+                            color: #a2a2a2;
+                            text-transform: capitalize;
                         }
                         input {
                             font-family: $font-family;
-                            border-radius: 30px;
-                            border: 1px solid $shadow;
+                            border: none;
+                            border-bottom: 1px solid $shadow;
                             @include box-sizing;
-                            padding: 5px 10px;
+                            padding: 2px 0;
+                            margin: 5px 0;
                             width: 100%;
-                            font-size: 12px;
+                            font-size: 15px;
                         }
                         textarea {
+                            margin: 5px 0;
+                            border: none;
                             font-size: 12px;
                             font-family: $font-family;
-                            border: 1px solid $shadow;
+                            border-bottom: 1px solid $shadow;
                             @include box-sizing;
-                            padding: 5px 10px;
+                            padding: 2px 0;
                             width: 100%;
+                            height: 40px;
                         }
                     }
                     button {
                         opacity: 0.8;
                         border: none;
-                        border-radius: 50px;
                         padding: 10px 20px;
-                        background: $orange;
-                        width: 100%;
+                        background: $dark-blue;
+                        border-radius: 7px;
+                        float: right;
+                        color: white;
+                        font-size: 15px;
+                        @include transition(background-color, 0.1s, ease-in-out);
+                        &:hover {
+                            background: $light-blue;
+                            @include transition(background-color, 0.1s, ease-in-out);
+                        }
                     }
                 }
             }
@@ -348,14 +301,15 @@ body{
                 padding: 25px 50px;
                 .btn {
                     border: none;
-                    border-radius: 50px;
+                    border-radius: 7px;
                     background: $dark-blue;
                     padding: 10px 20px;
+                    margin-bottom: 4px;
                     color: $white;
-                    margin: 20px 10px 20px 0;
                     &:hover {
                         background: $light-blue;
                     }
+                    float: right;
                 }
                 table {
                     width: 100%;
@@ -370,6 +324,7 @@ body{
                                 font-weight: $regular;
                                 font-size: 13px;
                                 text-transform: uppercase;
+                                padding: 10px;
                             }
                         }
                     } 
@@ -389,85 +344,7 @@ body{
                         }
                     }
                 }
-                #alert, #create {
-                    overflow: hidden;
-                    min-height: calc(100vh - 45px);
-                    @include box-sizing;
-                    position: absolute;
-                    top: 50px;
-                    bottom: 0;
-                    left: 100px;
-                    right: 0;
-                    background: rgba(23, 23, 23, 0.7);
-                    &.visible {
-                        display: block;
-                    }
-                    &.hide {
-                        display: none;
-                    }
-                    .btn-close {
-                        border: none;
-                        background: 0 0;
-                        position: absolute;
-                        margin: 2% 0 0 72%;
-                        i {
-                            color: $orange;
-                            font-size: 18px;
-                        }
-                    }
-                    .box {
-                        @include box-sizing;
-                        background: $white;
-                        width: 50%;
-                        margin: 1% 25%;
-                        padding: 20px 100px;
-                        text-align: center;
-                        p {
-                            text-transform: uppercase;
-                            border-bottom: 1px solid $black;
-                            padding-bottom: 5px; 
-                            margin-bottom: 25px; 
-                        }
-                        form {
-                            .form-item{
-                                margin: 10px 0;
-                                label {
-                                    font-family: $font-family;
-                                    font-size: 10px;
-                                    font-weight: $bold;
-                                    margin-bottom: 5px;
-                                    margin-left: 5px;
-                                    text-transform: uppercase;
-                                }
-                                input {
-                                    font-family: $font-family;
-                                    border-radius: 30px;
-                                    border: 1px solid $shadow;
-                                    @include box-sizing;
-                                    padding: 5px 10px;
-                                    width: 100%;
-                                    font-size: 12px;
-                                }
-                                textarea {
-                                    font-size: 12px;
-                                    font-family: $font-family;
-                                    border: 1px solid $shadow;
-                                    @include box-sizing;
-                                    padding: 5px 10px;
-                                    width: 100%;
-                                }
-                            }
-                            button {
-                                opacity: 0.8;
-                                border: none;
-                                border-radius: 50px;
-                                padding: 10px 20px;
-                                background: $orange;
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
+
             }
             .dashboard{
                 width: 100%;
@@ -649,3 +526,88 @@ body{
 
     }
 }
+
+#alert, #create {
+    .btn-close: {
+        top: 10px !important;
+    }
+    @include box-sizing;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 100px;
+    right: 0;
+    background: $white;
+    &.visible {
+        display: block;
+    }
+    &.hide {
+        display: none;
+    }
+    .box {
+        @include box-sizing;
+        background: #f ff;
+        padding: 50px;
+        text-align: center;
+    }
+}
+#create {
+    .box {
+        @include box-sizing;
+        padding: 20px 100px;
+        text-align: center;
+                        p {
+        text-transform: uppercase;
+        border-bottom: 1px solid black;
+        padding-bottom: 5px; 
+        margin-bottom: 25px; 
+        }
+    form {
+        .form-item{
+            margin: 15px 0;
+            label {
+                font-family: $font-family;
+                font-size: 12px;
+                font-weight: $regular;
+                color: #a2a2a2;
+                text-transform: capitalize;
+            }
+                        input {
+                            font-family: $font-family;
+                            border: none;
+                            border-bottom: 1px solid $shadow;
+                            @include box-sizing;
+                            padding: 2px 0;
+                            margin: 5px 0;
+                            width: 100%;
+                            font-size: 15px;
+                        }
+                        textarea {
+                            margin: 5px 0;
+                            border: none;
+                            font-size: 12px;
+                            font-family: $font-family;
+                            border-bottom: 1px solid $shadow;
+                            @include box-sizing;
+                            padding: 2px 0;
+                            width: 100%;
+                            height: 40px;
+                        }
+                    }
+                    button {
+                        opacity: 0.8;
+                        border: none;
+                        padding: 10px 20px;
+                        background: $dark-blue;
+                        border-radius: 7px;
+                        float: right;
+                        color: white;
+                        font-size: 15px;
+                        @include transition(background-color, 0.1s, ease-in-out);
+                        &:hover {
+                            background: $light-blue;
+                            @include transition(background-color, 0.1s, ease-in-out);
+                        }
+                    }
+                }
+                }}

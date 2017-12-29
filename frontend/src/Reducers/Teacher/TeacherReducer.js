@@ -1,19 +1,18 @@
 import * as Actions from '../../Actions/ActionTypes'
 
-
-const eventsReducer = (state = { isLoading: false, error: undefined, data: {} }, action) => {
+const teacherReducer = (state = { isLoading: false, error: undefined, data: {} }, action) => {
     switch (action.type) {
-        case Actions.EVENTS_PENDING:
+        case Actions.TEACHER_PENDING:
             return Object.assign({}, 
                 state, {
                 isLoading: true,
             });
-        case Actions.EVENTS_ERROR:
+        case Actions.TEACHER_ERROR:
             return Object.assign({}, state, {
                 isLoading: false,
                 error: action.error
             });
-        case Actions.EVENTS_SUCCESS:
+        case Actions.TEACHER_SUCCESS:
             return Object.assign({}, state, {
                 isLoading: false,
                 data: action.data
@@ -23,4 +22,4 @@ const eventsReducer = (state = { isLoading: false, error: undefined, data: {} },
     }
 }
 
-export default eventsReducer;
+export default teacherReducer;

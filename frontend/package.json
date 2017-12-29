@@ -14,18 +14,22 @@
 		"react": "16.0.0",
 		"react-native": "0.50.3",
 		"react-native-ble-manager": "^6.2.4",
+		"react-native-material-kit": "^0.5.1",
 		"react-native-router-flux": "^4.0.0-beta.24",
-		"react-redux": "^5.0.4",
-		"redux": "^3.6.0",
-		"redux-logger": "^2.6.1",
-		"redux-promise": "^0.5.3",
-		"redux-thunk": "^2.2.0"
+		"react-native-vector-icons": "^4.4.2"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
 		"babel-preset-react-native": "4.0.0",
 		"jest": "21.2.1",
-		"react-test-renderer": "16.0.0"
+		"react-test-renderer": "16.0.0",
+		"pubnub": "^4.0.9",
+		"react-redux": "^5.0.4",
+		"redux": "^3.6.0",
+		"redux-logger": "^2.6.1",
+		"redux-promise": "^0.5.3",
+		"redux-thunk": "^2.2.0",
+		"immutable": "^3.8.1"
 	},
 	"jest": {
 		"preset": "react-native"

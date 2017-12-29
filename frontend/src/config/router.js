@@ -7,6 +7,8 @@ import Docenten from '../Screens/Docenten';
 import Events from '../Screens/Events';
 import Event from '../Screens/Event';
 import Profiel from '../Screens/Profiel';
+import Chat from '../Screens/Chat';
+
 
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params);
@@ -35,17 +37,11 @@ const navigator = () => (
       <Scene
         key="sense"
         initial={true}
-        component={Sense}
-      />
-      <Scene
-        key="docenten"
-        component={Docenten}
-      />
+        component={Sense}/>
       <Scene key="events" navTransparent={true}>
         <Scene
           key="allevents"
-          component={Events}
-        />
+          component={Events}/>
         <Scene
           back={true}
           init={false}
@@ -53,6 +49,15 @@ const navigator = () => (
           title='Terug naar evenementen'
           component={Event}
         />
+      </Scene>
+      <Scene key="docenten" navTransparent={true}>
+        <Scene
+          key="docenten"
+          component={Docenten} />
+        <Scene
+          back={true}
+          key="chat"
+          component={Chat}/>
       </Scene>
       <Scene
         key="profiel"

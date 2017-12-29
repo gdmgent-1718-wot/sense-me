@@ -1,10 +1,17 @@
-export const SERVICE_PENDING = 'service_pending'
-export const SERVICE_ERROR = 'service_error'
-export const SERVICE_SUCCESS = 'service_success'
-export const SERVICE_RESET = 'service_reset'
+export const SELECT_EVENT = 'select_event'
+export const REQUEST_EVENT = 'request_event'
+export const RECEIVE_EVENT = 'receive_event'
 
-export const SELECT_EVENT = 'SELECT_EVENT'
-export const REQUEST_EVENT = 'REQUEST_EVENT'
-export const REQUEST_EVENTS = 'REQUEST_EVENTS'
-export const RECEIVE_EVENT = 'RECEIVE_EVENT'
-export const RECEIVE_EVENTS = 'RECEIVE_EVENTS'
+
+
+export const CONNECTING = 'connect';
+export const CONNECTED = 'connected';
+export const DISCONNECTED = 'disconnected';
+
+export const TEACHER_PENDING = 'teacher_pending';
+export const TEACHER_SUCCESS = 'teacher_success';
+export const TEACHER_ERROR = 'teacher_error';
+
+export const EVENTS_PENDING = 'teacher_pending';
+export const EVENTS_SUCCESS = 'events_success';
+export const EVENTS_ERROR = 'events_error';

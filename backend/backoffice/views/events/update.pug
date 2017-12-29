@@ -2,9 +2,11 @@ extends ../layout
 
 block content
   .events-update
-    a.btn.flex(href="/backoffice/events") 
-      i.fa.fa-chevron-left 
-    h1 Evenement #{item.name} aanpassen 
+    a.btn-close.flex(href="/backoffice/events") 
+      i.fa.fa-times 
+    div.banner
+      img(src=item.src)
+      h1 #{item.name} 
     form(method='post' action=`/backoffice/events/${item._id}/update`)
       .flex.column.start.form-item
         label Naam 

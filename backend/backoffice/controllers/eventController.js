@@ -28,12 +28,12 @@ exports.create_a_event = function(req, res) {
 
   let name =  new Date().getTime() + '.' + ex;
   let uploadPath = path.join(uploadDir, name);
+
   testFile.mv(uploadPath, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
   });
-
   var new_event = new Events(req.body);
   new_event.src = 'http://192.168.1.155:3000/uploads/events/' + name;
 
@@ -47,6 +47,19 @@ exports.create_a_event = function(req, res) {
 
 
 exports.update_a_event = (req, res) => {
+  let banner = req.files.file;
+  let ex = banner.name.split('.').pop();
+
+  let name =  new Date().getTime() + '.' + ex;
+  let uploadPath = path.join(uploadDir, name);
+
+  banner.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+  });
+
+  req.body['src'] = 'http://192.168.1.155:3000/uploads/events/' + name;
   Events.findOneAndUpdate({_id: req.params.eventId}, req.body, {new: true}, (err, event) => {
     if (err)
       res.send(err);

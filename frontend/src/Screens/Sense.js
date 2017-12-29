@@ -89,14 +89,14 @@ class Sense extends Component {
 
   handleStopScan() {
     console.log('Scan is stopped');
-    this.setState({ scanning: false });
+    this.state.scanning = false;
   }
 
   startScan() {
     if (!this.state.scanning) {
       BleManager.scan([], 3, false).then((results) => {
         console.log('Scanning...');
-        this.setState({scanning:true});
+        this.state.scanning = true;
       });
     }
   }
@@ -106,7 +106,7 @@ class Sense extends Component {
     if (!peripherals.has(peripheral.id)){
       console.log('Got ble peripheral', peripheral);
       peripherals.set(peripheral.id, peripheral);
-      this.setState({ peripherals })
+      this.state.peripherals = peripherals;
     }
   }
 
@@ -121,8 +121,10 @@ class Sense extends Component {
           if (p) {
             p.connected = true;
             peripherals.set(peripheral.id, p);
-            this.setState({peripherals});
-            this.setState({connecting: true})
+            //this.setState({peripherals});
+            this.state.peripherals = peripherals;
+            this.state.connecting = true;
+            ///this.setState({connecting: true})
           }
           console.log('Connected to ' + peripheral.id);
         }).catch((error) => {

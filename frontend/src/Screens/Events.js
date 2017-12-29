@@ -6,7 +6,7 @@ import {
   StyleSheet, Button
 } from 'react-native';
 
-import ServiceAction from '../Actions/EventActions';
+import EventList from '../Actions/Events/EventActions';
 import { Actions } from 'react-native-router-flux';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 export default  Events = () => {
   return (
 		<View style={style.container}>
-		<ServiceAction />
+		<EventList />
     </View>
   )
 }

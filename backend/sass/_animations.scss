@@ -1,0 +1,11 @@
+@keyframes rotateHover {
+  0% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform:  rotate(400deg);
+  }
+  100% {
+    transform:  rotate(360deg);
+  }
+}

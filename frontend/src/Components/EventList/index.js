@@ -19,7 +19,7 @@ export class EventList extends Component {
     }
 
     componentDidMount() {
-        this.props.callService();
+        this.props.callEvents();
     }
 
     componentWillReceiveProps(nextProps) {

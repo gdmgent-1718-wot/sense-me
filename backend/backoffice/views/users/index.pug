@@ -2,9 +2,9 @@ extends ../layout
 
 block content
   .users
-    .flex 
-      button(type='button' class='btn' onclick="popup('student')") Student aanmaken
-      button(type='button' class='btn' onclick="popup('teacher')") Docent aanmaken 
+    .flex
+      p(type='button' onclick="popup('student')") Voeg student toe
+      p(onclick="popup('teacher')") Voeg docent toe
     .flex
       h1 Studenten
       h1 Docenten
@@ -43,36 +43,37 @@ block content
 
     #alert.hide
       .box
+        a.btn-close.flex(type='button' onclick="hide('alert')")
+         i.fa.fa-close
         p.removeUser
         .flex.justified-space 
           form(method='post' action="" class="form")
             button.btn(type='submit' onclick="hide('alert')") verwijderen
-          button.btn(onclick="hide('alert')") Annuleer
 
     #create.hide
-      button.btn-close(onclick="hide('type')") 
+      a.btn-close.flex(type='button' onclick="hide('type')")
         i.fa.fa-close
       .box
         p Maak een nieuwe gebruiker aan.
-          form(method='post' enctype="multipart/form-data" action=`/backoffice/users`)
-            .flex.column.start.form-item
-              label Naam
-              input(type="text" placeholder="Naam" name="name" value="")
-              input(type="hidden" name="active" value="false")
-              input(type="hidden" id="role" name="_role")
-            .flex.column.start.form-item
-              label profiel foto
-              input(type="file" name="file")
-            .flex.column.start.form-item
-              label Geboortedatum
-              input(type="date" placeholder="Geboortedatum" name="birthday" value="")
-            .flex.column.start.form-item
-              label Woonplaats
-              input(type="text" placeholder="Woonplaats" name="origin" value="")
-            .flex.column.start.form-item
-              label Over persoon
-              input(type="text" placeholder="Over persoon" name="about" value="")
-            button.btn(type='submit' onclick="hide('type')") Klaar
+        form(method='post' enctype="multipart/form-data" action=`/backoffice/users`)
+          .flex.column.start.form-item
+            label Naam
+            input(type="text" placeholder="Naam" name="name" value="")
+            input(type="hidden" name="active" value="false")
+            input(type="hidden" id="role" name="_role")
+          .flex.column.start.form-item
+            label profiel foto
+            input(type="file" name="file")
+          .flex.column.start.form-item
+            label Geboortedatum
+            input(type="date" placeholder="Geboortedatum" name="birthday" value="")
+          .flex.column.start.form-item
+            label Woonplaats
+            input(type="text" placeholder="Woonplaats" name="origin" value="")
+          .flex.column.start.form-item
+            label Over persoon
+            input(type="text" placeholder="Over persoon" name="about" value="")
+          button.btn(type='submit' onclick="hide('type')") Klaar
         
     script.
       var students = document.querySelector('.studentBody'); 
