@@ -3,6 +3,11 @@ var mongoose = require('mongoose');
 var User = mongoose.model('Users', 'UserSchema');
 var Role = mongoose.model('Roles', 'RoleSchema');
 
+//IMAGES 
+const path = require('path');
+const fs = require('fs-extra');
+
+
 exports.list_all_users = (req, res) => {
   var teachers = [];
   var students = [];
@@ -39,13 +44,36 @@ exports.list_all_users = (req, res) => {
 };
 
 exports.create_a_user = (req, res) => {
-  Role.findOne({name: req.body._role} , (err, role) => {
+  // Get name of role
+  const role = req.body._role;
+  // Get the file from the request.
+  let picture = req.files.file;
+  // Rename the file. 
+  let ex = picture.name.split('.').pop();
+  // Upload to a directory
+  let uploadDir = path.join(__dirname, '../../uploads/' + role);
+  let name =  new Date().getTime() + '.' + ex;
+  let uploadPath = path.join(uploadDir, name);
+
+  // Move the picture to the given path. 
+  picture.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+  });
+
+  // Find the role so we can append it to the user.
+  Role.findOne({name: role} , (err, role) => {
+    console.log('ROLE FIND ONE: ', role);
+    // Get the user from the body and append a upload src. 
+    // Also add a role to the user and then save it. 
     var new_user = new User(req.body);
-    new_user['_role'] = role;
-    new_user.save((err, user) => {
-      if (err){ res.send(err); }
-      res.redirect('/backoffice/users');
-    });
+        new_user.profile_picture = 'http://192.168.1.155:3000/uploads/' + role + name;
+        new_user['_role'] = role;
+        new_user.save((err, user) => {
+          if (err){ res.send(err); }
+          res.redirect('/backoffice/users');
+        });
   });
 };
 

@@ -54,12 +54,15 @@ block content
         i.fa.fa-close
       .box
         p Maak een nieuwe gebruiker aan.
-          form(method='post' action=`/backoffice/users`)
+          form(method='post' enctype="multipart/form-data" action=`/backoffice/users`)
             .flex.column.start.form-item
               label Naam
               input(type="text" placeholder="Naam" name="name" value="")
               input(type="hidden" name="active" value="false")
               input(type="hidden" id="role" name="_role")
+            .flex.column.start.form-item
+              label profiel foto
+              input(type="file" name="file")
             .flex.column.start.form-item
               label Geboortedatum
               input(type="date" placeholder="Geboortedatum" name="birthday" value="")

@@ -13,6 +13,9 @@ module.exports = function(app) {
     .put(roles.update_a_role)
     .delete(roles.delete_a_role);
 
+  app.route('/api/users/:role')
+    .get(users.list_by_role);
+
   app.route('/api/users')
     .get(users.list_all_users)
     .post(users.populate);

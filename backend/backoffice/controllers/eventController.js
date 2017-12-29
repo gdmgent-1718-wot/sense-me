@@ -2,15 +2,9 @@
 var mongoose = require('mongoose');
 var Events = mongoose.model('Events', 'EventSchema');
 const path = require('path');
-const uploadDir = path.join(__dirname, '../../uploads');
+const uploadDir = path.join(__dirname, '../../uploads/events');
 const fs = require('fs-extra');
-const clearUploadsDir = function() {
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
-  } else {
-    fs.emptyDirSync(uploadDir);
-  }
-};
+
 exports.get_index = (req, res) => {
   var event = true;
   Events.find({}, function(err, events) {
@@ -41,7 +35,7 @@ exports.create_a_event = function(req, res) {
   });
 
   var new_event = new Events(req.body);
-  new_event.src = 'http://192.168.1.155:3000/uploads/' + name;
+  new_event.src = 'http://192.168.1.155:3000/uploads/events' + name;
 
   new_event.save(function(err, event) {
     console.log(event.src);

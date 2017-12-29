@@ -28,6 +28,9 @@ var UserSchema = new Schema({
     type: String,
     required: 'Kindly enter something about you',
   },
+  profile_picture: {
+    type: String,
+  },
   created_at: {
     type: Date,
     default: Date.now
