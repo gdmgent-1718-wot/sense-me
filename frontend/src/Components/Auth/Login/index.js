@@ -3,15 +3,17 @@ import { StyleSheet, Text, View, ListView, ActivityIndicator, TextInput, Touchab
 import { connect }from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon  from 'react-native-vector-icons/FontAwesome';
+
 import store from '../../../Reducers/index';
 import Colors from '../../../Config/Theme';
+import Button from '../../Button/index';
 
 class LoginService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: 'Gebruikersnaam',
+      password: 'Wachtwoord',
     }
     error = "";
     errorActive = false;
@@ -30,15 +32,11 @@ class LoginService extends Component {
     return (
       <View style={styles.container}>
         {this.errorActive == true ? <Text style={styles.error}>{this.error}</Text> : null}
-        <Text style={styles.label}>username</Text>
-        <TextInput style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
 
-        <Text style={styles.label}>password</Text>
+        <TextInput style={styles.textInput} onChangeText={(username) => {this.setState({username})}} value={this.state.username}/>
         <TextInput style={styles.textInput} onChangeText={(password) => this.setState({password})} value={this.state.password}/>
-            
-        <TouchableOpacity style={styles.btn} onPress={() => {this.props.login(JSON.stringify(this.state)); }}>
-          <Text style={styles.btnText}>Log in</Text>
-        </TouchableOpacity>
+        
+        <Button onPress={() => {this.props.login(JSON.stringify(this.state)); }}> Log in </Button>
       </View>
     );
   }
@@ -46,8 +44,8 @@ class LoginService extends Component {
 
 const styles = StyleSheet.create({
   container: {
-      alignSelf: "stretch",
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
+      alignItems: 'center',
       margin: 10,
   },
   label: {
@@ -57,15 +55,13 @@ const styles = StyleSheet.create({
   },
   textInput: {
       marginBottom: 15,
+      height: 40,
+      width: 300,
+      borderColor: 'white',
+      borderWidth: 1,
+      padding: 10,
+      backgroundColor: 'white'
   },
-  btn: {
-      backgroundColor: Colors.darkgrey,
-      padding: 15,
-      alignItems: 'center',
-  }, 
-  btnText: {
-      color: '#FFF'
-  }, 
   error: {
       color: '#efefef',
       textAlign: 'center',

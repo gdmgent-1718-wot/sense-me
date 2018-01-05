@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,  Image } from 'react-native';
+import Colors from '../../Config/Theme';
 
 const logo = require('../../../assets/logo_reverse.png');
+
 const Header = (props) => (
     <View style={style.container}>
         <Image source={logo} style={style.logo} />
@@ -13,7 +15,7 @@ const style = StyleSheet.create ({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2B98D4',
+        backgroundColor: Colors.mediumBlue,
       },
       logo : {
         width: 30,

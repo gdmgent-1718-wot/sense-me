@@ -21,7 +21,6 @@ export default class App extends React.Component {
         return (
             <Provider store={store}>
             <View style={{flex: 1}}>
-                <Header />
                 <ReduxRouter navigator={navigator} />
                 </View>
             </Provider>

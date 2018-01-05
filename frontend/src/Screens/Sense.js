@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, NativeAppEventEmitter, NativeEventEmitter, NativeModules, Platform, PermissionsAndroid, ListView, ScrollView, AppState } from 'react-native';
 import BleManager from 'react-native-ble-manager';
 import Button from '../Components/Button/index';
+import Header from '../Components/Header/index';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 const BleManagerModule = NativeModules.BleManager;
@@ -145,6 +146,7 @@ class Sense extends Component {
 
       return (
         <View>
+          <Header />
           <Text style={style.statusText}>Test</Text>
         </View>
       )
@@ -152,9 +154,8 @@ class Sense extends Component {
 
     return (
       <View>
-
+        <Header />
         <Button onPress={() => this.startScan() }> Sense andere </Button>
-
         <ScrollView>
         {(list.length == 0) &&
           <View style={{flex:1, margin: 20}}>
