@@ -7,7 +7,7 @@ import styles from './style';
 // Connect to the actions.
 import { connect } from 'react-redux';
 // Connect to the store for our props. 
-import  store from './../../../Reducers/Index';
+import  store from './../../../Reducers/index';
 // Format date
 import moment from 'moment';
 import 'moment/locale/nl-be';

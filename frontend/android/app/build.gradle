@@ -140,6 +140,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
     compile project(':react-native-material-kit')
     compile project(':react-native-ble-manager')
     compile fileTree(dir: "libs", include: ["*.jar"])

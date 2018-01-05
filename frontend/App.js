@@ -2,8 +2,8 @@ import React from 'react';
 import { Provider, connect } from 'react-redux';
 import { Scene, Actions, Router} from 'react-native-router-flux';
 import Header from './src/Components/Header/index';
-import navigator from './src/Config/Router';
-import store from './src/Reducers/Index';
+import navigator from './src/Config/router';
+import store from './src/Reducers/index';
 import { View } from 'react-native'
 
 import PropTypes from 'prop-types';
