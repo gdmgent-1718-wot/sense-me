@@ -1,4 +1,4 @@
-import * as Actions from '../Actions/ActionTypes'
+import * as Actions from '../../Actions/ActionTypes';
 
 const AuthReducer = (state = { isLoading: false, error: undefined, loggedIn: false, credentials: {}, token: '', id: '' }, action) => {
     switch (action.type) {
@@ -16,7 +16,7 @@ const AuthReducer = (state = { isLoading: false, error: undefined, loggedIn: fal
                 isLoading: false,
                 loggedIn: true,
                 token: action.data.token,
-                id: action.data.parent,
+                id: action.data.user,
             }); 
         default:
             return state;

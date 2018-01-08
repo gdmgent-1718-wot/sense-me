@@ -1,11 +1,10 @@
 import * as ActionTypes from '../ActionTypes';
 import axios from 'axios';
-import LoginService from '../../Components/Auth/Login/index';
+import LoginService from '../../Components/Login/index';
 
 import { Actions } from 'react-native-router-flux';
 import { AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
-import { URL } from '../../Config/Index';
 
 const mapStateToProps = (state) => ({   
     isLoading: state.auth.isLoading,
@@ -21,7 +20,7 @@ export const login =(credentials) => {
     return dispatch => {
         dispatch(loginPending());
         axios.post(
-            URL + 'auth', 
+            'http://192.168.0.107:3000/api/auth/login', 
             credentials, 
             { headers: {'Content-Type': 'application/json'}}
         ) 
@@ -38,14 +37,14 @@ export const login =(credentials) => {
         });
     }
 }
-saveCredentials = (username, password, token, parent_id) => {
+saveCredentials = (username, password, token, user_id) => {
         let parent = {
             username: username, 
             password: password, 
             token: token, 
-            parent_id: parent_id
+            user_id: user_id
         } 
-        return AsyncStorage.setItem('parent', JSON.stringify(parent)); 
+        return AsyncStorage.setItem('user', JSON.stringify(parent)); 
 }
 
 export const loginPending = () => ({

@@ -35,7 +35,7 @@ exports.create_a_event = function(req, res) {
     }
   });
   var new_event = new Events(req.body);
-  new_event.src = 'http://192.168.1.155:3000/uploads/events/' + name;
+  new_event.src = 'http://192.168.0.107:3000/uploads/events/' + name;
 
   new_event.save(function(err, event) {
     console.log(event.src);
@@ -59,7 +59,7 @@ exports.update_a_event = (req, res) => {
     }
   });
 
-  req.body['src'] = 'http://192.168.1.155:3000/uploads/events/' + name;
+  req.body['src'] = 'http://192.168.0.107:3000/uploads/events/' + name;
   Events.findOneAndUpdate({_id: req.params.eventId}, req.body, {new: true}, (err, event) => {
     if (err)
       res.send(err);

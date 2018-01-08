@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import Header from '../Components/Header/index';
 
 class Profiel extends Component {
   render() {
     return (
-      <View style={style.container}>
-          <Text style={style.statusText}>Profiel</Text>
+      <View>
+				<Header/>
+        <Text style={style.statusText}>Profiel</Text>
       </View>
     );
   }
 }
 
 const style = StyleSheet.create ({
-    container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
 	statusText: {
 		fontSize: 40,
 		fontWeight: 'bold',

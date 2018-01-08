@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import Colors from '../Config/Theme';
-import LoginService from '../Actions/Login/AuthActions';
+import LoginService from '../Actions/Login/authActions';
 
 const logo = require('../../assets/logo_reverse.png');
 
@@ -15,7 +15,7 @@ class Login extends React.Component{
         return (
             <View style={styles.background}>
                 <Image source={logo} style={styles.logo} /> 
-                <LoginService /> 
+                <LoginService/>
             </View>
         )
     }

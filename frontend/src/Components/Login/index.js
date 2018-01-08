@@ -4,9 +4,9 @@ import { connect }from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 
-import store from '../../../Reducers/index';
-import Colors from '../../../Config/Theme';
-import Button from '../../Button/index';
+import store from '../../Reducers/index';
+import Colors from '../../Config/Theme';
+import Button from '../Button/index';
 
 class LoginService extends Component {
   constructor(props) {

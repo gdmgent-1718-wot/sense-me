@@ -1,5 +1,6 @@
 import * as Actions from '../../Actions/ActionTypes'
 import { combineReducers } from 'redux';
+
 function selectedEvent(state = 'event', action) {
     switch (action.type) {
       case Actions.SELECT_EVENT:
@@ -7,13 +8,10 @@ function selectedEvent(state = 'event', action) {
       default:
         return state
     }
-  }
-  function event(
-    state = {
-      isFetching: false,
-      error: false,
-      event: {}
-    }, action ) {
+}
+
+function event(
+    state = {isFetching: false, error: false,event: {}}, action ) {
     switch (action.type) {
       case Actions.REQUEST_EVENT:
         return Object.assign({}, state, {
@@ -35,14 +33,11 @@ function selectedEvent(state = 'event', action) {
       default:
         return state
     }
-  }
-  
-
- 
-  const eventReducer = combineReducers({
+}
+   
+const eventReducer = combineReducers({
     event: event,
     selected: selectedEvent
-  })
+})
   
   export default eventReducer
-  

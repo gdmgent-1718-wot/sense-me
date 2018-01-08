@@ -12,6 +12,8 @@ const express = require('express'),
 
 const fileUpload = require('express-fileupload');
 
+
+
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect(config.database); 
@@ -21,6 +23,15 @@ app.locals.moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());
+
+// Enable CORS from client-side
+app.use(function(req, res, next) {  
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials");
+      res.header("Access-Control-Allow-Credentials", "true");
+      next();
+});
 
 // Enable request picture from directory
 app.use("/uploads/events",express.static(__dirname + "/uploads/events"));

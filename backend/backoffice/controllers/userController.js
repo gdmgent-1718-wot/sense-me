@@ -68,7 +68,7 @@ exports.create_a_user = (req, res) => {
     // Get the user from the body and append a upload src. 
     // Also add a role to the user and then save it. 
     var new_user = new User(req.body);
-        new_user.profile_picture = 'http://192.168.1.155:3000/uploads/' + role.name + '/' + name;
+        new_user.profile_picture = 'http://192.168.0.107:3000/uploads/' + role.name + '/' + name;
         new_user['_role'] = role;
         new_user.save((err, user) => {
           if (err){ res.send(err); }

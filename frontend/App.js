@@ -14,7 +14,7 @@ const ReduxRouter = connect()(Router);
 export default class App extends React.Component {
     constructor(props){
         super(props);
-      }
+    }
 
     render() {
         console.log(this.state)

@@ -5,12 +5,13 @@ import 'moment/locale/nl-be';
 import { Actions } from 'react-native-router-flux'; 
 import { connect } from 'react-redux';
 import styles from './style';
-import PropTypes from 'prop-types';
+
 export class EventList extends Component {
 
     constructor(props) {
         super(props);
         moment.locale('nl-be');
+
         this.state = {
             dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2,
@@ -31,16 +32,14 @@ export class EventList extends Component {
     }
     renderCell = (event) => (
         <TouchableOpacity 
-            style={styles.containerList}
-            onPress={() => {
+            style={styles.containerList} onPress={() => {
                 this.props.select(event._id)
                 this.props.fetch(event._id)
             }}>
             <Image source={{ uri: event.src }} style={styles.photo}/>
             <View style={styles.info}>
-            
                 <Text style={styles.title}>{event.name}</Text>
-                <Text>{moment(event.date).format('DD.MM.\'YY')}   {event.start}-{event.stop}</Text>
+                <Text>{moment(event.date).format('DD/MM/YY')}   {event.start}-{event.stop}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -48,12 +47,8 @@ export class EventList extends Component {
     render() {
         const { dataSource, isLoading } = this.state;
         return (
-            <View style={styles.container}>
-                <ListView
-                    enableEmptySections={true}
-                    dataSource={dataSource}
-                    renderRow={(event) => this.renderCell(event)}
-                />
+            <View>
+                <ListView enableEmptySections={true} dataSource={dataSource} renderRow={(event) => this.renderCell(event)}/>
             </View>
         );
     }

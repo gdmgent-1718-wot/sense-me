@@ -7,7 +7,6 @@ import styles from './style';
 export class TeacherList extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data : [],
         }
@@ -41,10 +40,8 @@ export class TeacherList extends Component {
         return (
             <ScrollView contentContainerStyle={styles.grid}>
                 {this.state.data.length > 0? this.renderItems():<Text>No teachers found.</Text> }
-            <View></View>
             </ScrollView>
         );
     }
 }
 export default connect(({routes}) => ({routes}))(TeacherList)
-  

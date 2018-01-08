@@ -1,36 +1,17 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  StyleSheet, Button
-} from 'react-native';
-
+import { View, StyleSheet } from 'react-native';
 import EventList from '../Actions/Events/EventActions';
-import { Actions } from 'react-native-router-flux';
-import PropType from 'prop-types';
-import { connect } from 'react-redux';
+import Header from '../Components/Header/index';
 
-export default  Events = () => {
-  return (
-		<View style={style.container}>
-		<EventList />
-    </View>
-  )
+class Events extends Component {
+  render() {
+    return (
+      <View>
+				<Header/>
+				<EventList/>
+      </View>
+    );
+  }
 }
 
-const style = StyleSheet.create ({
-    container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	statusText: {
-		fontSize: 40,
-		fontWeight: 'bold',
-		marginTop: 60,
-		textAlign: 'center',
-		color: 'black',
-		backgroundColor: 'rgba(0,0,0,0)',
-	}
-})
+export default Events;

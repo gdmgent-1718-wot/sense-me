@@ -1,7 +1,7 @@
 'use strict';
 const jwt = require('jsonwebtoken'),  
       crypto = require('crypto'),
-      User = require('../../models/userModel'),
+      user = require('../../models/userModel'),
       config = require('../../config/main');
 
 function generateToken(user) {  
@@ -17,6 +17,8 @@ exports.login = function (req, res, next) {
 
   const userInfo = {
     _id: request._id,
+    username: request.username,
+    password: request.password,
   }
 
   res.status(200).json({

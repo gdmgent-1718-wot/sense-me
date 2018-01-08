@@ -23,12 +23,7 @@ const navigator = () => (
   <Router createReducer={reducerCreate}>
     <Scene key="root" tabBarPosition='bottom'>
 
-      <Scene
-          initial={true}
-          key="login"
-          component={Login}
-          hideNavBar={true}
-      />
+      <Scene initial={true} key="login" component={Login} hideNavBar={true}/>
 
       <Scene 
       key="tabbar"
@@ -39,39 +34,21 @@ const navigator = () => (
       activeTintColor={Colors.darkgrey}
       labelStyle={{flex: 1, alignSelf: 'center', fontSize: 12, marginBottom: 15, color: Colors.white}}
       tabBarStyle={{  backgroundColor: Colors.mediumBlue }}>
-        <Scene
-          key="sense"
-          component={Sense}
-        />
+
+        <Scene key="sense" component={Sense} />
 
         <Scene key="events" navTransparent={true}>
-          <Scene
-            key="allevents"
-            component={Events}
-          />
-          <Scene
-            back={true}
-            init={false}
-            key="event"
-            title='Terug naar evenementen'
-            component={Event}
-          />
+          <Scene key="allevents" component={Events}/>
+          <Scene back={true} init={false} key="event" title='Terug naar evenementen' component={Event}/>
         </Scene>
 
         <Scene key="docenten" navTransparent={true}>
-          <Scene
-            key="docenten"
-            component={Docenten} />
-          <Scene
-            back={true}
-            key="chat"
-            component={Chat}/>
+          <Scene key="docenten" component={Docenten} />
+          <Scene back={true} key="chat" component={Chat} />
         </Scene>
 
-        <Scene
-          key="profiel"
-          component={Profiel}
-        />
+        <Scene key="profiel" component={Profiel}/>
+        
       </Scene>
     </Scene>
   </Router>
