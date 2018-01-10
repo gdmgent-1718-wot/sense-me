@@ -1,0 +1,90 @@
+extends ../layout
+
+block content
+  .events
+    button.btn#add Voeg evenement toe
+    table
+      thead
+        tr
+          th datum
+          th naam
+          th beschrijving 
+          th locatie
+          th start
+          th stop
+          th acties
+      tbody.eventBody
+        each event, i in events
+          tr  
+            td.date=moment(event.date).format("DD.MM.YYYY")
+            td=event.name
+            td=event.description 
+            td=event.location
+            td.start=event.start
+            td.end=event.stop
+            td.actions
+              a(href="/backoffice/events/" + event._id)
+                i.fa.fa-pencil
+              i.fa.fa-trash(id=`${event._id}`)
+
+    #alert.hide
+      .box
+        p.removeEvent
+        .flex.justified-space 
+          form(method='post' action="" class="form")
+            button.btn(type='submit' onclick="hide('alert')") verwijderen
+          button.btn(onclick="hide('alert')") Annuleer
+          
+    #create.hide
+      a.btn-close(onclick="hide('type')") 
+        i.fa.fa-close
+      .box
+        p Maak een nieuw evenement aan.
+        form(method='post' enctype="multipart/form-data" action=`/backoffice/events`)
+          .flex.column.start.form-item
+            label datum
+            input(type="date" placeholder="datum" name="date" value="")
+          .flex.column.start.form-item
+            label Naam
+            input(type="text" placeholder="Geef een naam aan je evenement" name="name" value="")
+          .flex.column.start.form-item
+            label Banner
+            input(type="file" name="file")
+          .flex.column.start.form-item
+            label Beschrijving
+            textarea(cols="30", rows="10" placeholder="Korte inhoud over je evenement" name="description" value="")
+          .flex.column.start.form-item
+            label Locatie
+            input(type="text" placeholder="Waar vind je evenement plaats" name="location" value="")
+          .flex.column.start.form-item
+            label Start tijd
+            input(type="time" name="start" value="")
+          .flex.column.start.form-item
+            label Eind tijd
+            input(type="time" name="stop" value="")
+          button.btn(type='submit' onclick="hide('type')") Toevoegen
+  
+  script.
+    var events = document.querySelector('.eventBody');
+
+    var add = document.querySelector('#add');
+    add.addEventListener('click', function(e) {
+      var create = document.querySelector('#create');
+          create.classList.remove('hide');
+          create.classList.add('visible')
+    }); 
+
+    var hide = function (type) {
+        if(type == 'alert'){
+          var alert = document.querySelector('#alert');
+              alert.classList.remove('visible');
+              alert.classList.add('hide');
+        } else if(type == 'type'){
+           var edit = document.querySelector('#update');
+              edit.classList.remove('visible');
+              edit.classList.add('hide');
+          var create = document.querySelector('#create');
+              create.classList.remove('visible');
+              create.classList.add('hide');
+        }
+    }
