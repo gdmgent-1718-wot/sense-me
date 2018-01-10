@@ -39,7 +39,7 @@ export const login =(credentials) => {
 }
 saveCredentials = (email, password, token, user_id) => {
         let user = {
-            usern: email, 
+            email: email, 
             password: password, 
             token: token, 
             user_id: user_id

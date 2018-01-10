@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Colors from './theme';
 
 import Sense from '../Screens/Sense';
-import Profiel from '../Screens/Profiel';
+import Test from '../Screens/Profiel';
 import Login from '../Screens/Login';
 import Docenten from '../Screens/Docenten';
 import Events from '../Screens/Events';
@@ -44,10 +44,10 @@ const navigator = () => (
 
         <Scene key="events" navTransparent={true}>
           <Scene key="allevents" component={Events}/>
-          <Scene back={true} init={false} key="event" title='Terug naar evenementen' component={Event}/>
+          <Scene back={true} init={false} key="event" component={Event}/>
         </Scene>
         
-        <Scene key="profiel" component={Profiel}/>
+        <Scene key="profiel" component={Test}/>
         
       </Scene>
     </Scene>

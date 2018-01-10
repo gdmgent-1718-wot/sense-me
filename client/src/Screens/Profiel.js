@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import Header from '../Components/Header/index';
+import React, {Component} from 'react';
+import {View,Text} from 'react-native';
 
-class Profiel extends Component {
+class Test extends Component {
   render() {
-    return (
+    return(
       <View>
-		<Header/>
+        <Text>welkom</Text>
       </View>
     );
   }
 }
 
-export default Profiel;
+export default Test;

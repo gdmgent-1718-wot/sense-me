@@ -12,12 +12,12 @@ const Header = (props) => (
 
 const style = StyleSheet.create ({
     container: {
-        height: 100,
-        justifyContent: 'center',
+        height: 80,
         alignItems: 'center',
         backgroundColor: Colors.mediumBlue,
       },
       logo : {
+        marginTop: 30,
         width: 30,
         height: 30,
       }

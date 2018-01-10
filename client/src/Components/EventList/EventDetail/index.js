@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Button, Image, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Button, Image } from 'react-native';
 // Import action types
 import * as ActionTypes from '../../../Actions/ActionTypes';
-// Import styles
-import styles from './style';
 // Connect to the actions.
 import { connect } from 'react-redux';
 // Connect to the store for our props. 
