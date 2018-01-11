@@ -11,8 +11,8 @@ class LoginService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'Gebruikersnaam',
-      password: 'Wachtwoord',
+      email: '',
+      password: '',
     }
     error = "";
     errorActive = false;

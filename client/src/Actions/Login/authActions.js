@@ -1,6 +1,7 @@
 import * as ActionTypes from '../ActionTypes';
 import axios from 'axios';
 import LoginService from '../../Components/Login/index';
+import Test from '../../Components/Profiel/index';
 
 import { Actions } from 'react-native-router-flux';
 import { AsyncStorage } from 'react-native';
@@ -24,8 +25,7 @@ export const login =(credentials) => {
             credentials, 
             { headers: {'Content-Type': 'application/json'}}
         ) 
-        .then(
-            response => { 
+        .then(response => { 
                 if(response.data != 'Invalid password'){
                     dispatch(loginSuccess(response.data)),
                     this.saveCredentials(credentials.email, credentials.password, response.data.token, response.data.user).then(Actions.sense()); 
@@ -37,6 +37,7 @@ export const login =(credentials) => {
         });
     }
 }
+
 saveCredentials = (email, password, token, user_id) => {
         let user = {
             email: email, 
@@ -61,4 +62,4 @@ export const loginError = (error) => ({
     error: error
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginService);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginService, Test);

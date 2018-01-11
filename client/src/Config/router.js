@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Colors from './theme';
 
 import Sense from '../Screens/Sense';
-import Test from '../Screens/Profiel';
+import Profiel from '../Screens/Profiel';
 import Login from '../Screens/Login';
 import Docenten from '../Screens/Docenten';
 import Events from '../Screens/Events';
@@ -23,7 +23,7 @@ const navigator = () => (
   <Router createReducer={reducerCreate}>
     <Scene key="root" tabBarPosition='bottom'>
 
-      {/*<Scene initial={true} key="login" component={Login} hideNavBar={true}/>*/}
+      <Scene initial={true} key="login" component={Login} hideNavBar={true}/>
 
       <Scene 
       key="tabbar"
@@ -47,7 +47,7 @@ const navigator = () => (
           <Scene back={true} init={false} key="event" component={Event}/>
         </Scene>
         
-        <Scene key="profiel" component={Test}/>
+        <Scene key="profiel" component={Profiel}/>
         
       </Scene>
     </Scene>
